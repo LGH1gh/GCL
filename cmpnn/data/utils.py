@@ -10,6 +10,8 @@ logger = logging.getLogger()
 DATA_INFO = {
     'zinc15_250K_2D': {'columns': ['smiles']},
     'zinc15_1M_2D': {'columns': ['smiles']},
+    'zinc15_10M_2D': {'columns': ['smiles']},
+
     'bbbp': 
         {'task_num': 1, 'task_type': 'classification', 'columns': ['smiles', 'p_np']},
     'clintox': 
