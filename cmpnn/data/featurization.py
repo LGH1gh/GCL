@@ -31,6 +31,7 @@ THREE_D_DISTANCE_BINS = list(range(0, THREE_D_DISTANCE_MAX + 1, THREE_D_DISTANCE
 ATOM_FDIM = sum(len(choices) + 1 for choices in ATOM_FEATURES.values()) + 2
 BOND_FDIM = 14
 
+SMILES_TO_GRAPH = {}
 
 def get_atom_fdim() -> int:
     return ATOM_FDIM
@@ -198,7 +199,12 @@ def mol2graph(smiles_batch: List[str],
               args: Namespace) -> BatchMolGraph:
     mol_graphs = []
     for smiles in smiles_batch:
-        mol_graph = MolGraph(smiles, args)
+        if smiles in SMILES_TO_GRAPH:
+            mol_graph = SMILES_TO_GRAPH[smiles]
+        else:
+            mol_graph = MolGraph(smiles, args)
+            SMILES_TO_GRAPH[smiles] = mol_graph
         mol_graphs.append(mol_graph)
+
 
     return BatchMolGraph(mol_graphs, args)

@@ -133,21 +133,21 @@ def get_metric_func(metric: str) -> Callable[[Union[List[int], List[float]], Lis
 
     raise ValueError(f'Metric "{metric}" not supported.')
 
-def get_loss_func(args: Namespace) -> nn.Module:
+def get_loss_func(data_info) -> nn.Module:
     """
     Gets the loss function corresponding to a given dataset type.
 
     :param args: Namespace containing the dataset type ("classification" or "regression").
     :return: A PyTorch loss function.
     """
-    if args.task_type == 'classification':
+    if data_info['task_type'] == 'classification':
         return nn.BCEWithLogitsLoss(reduction='none')
 
-    if args.task_type == 'regression':
+    if data_info['task_type'] == 'regression':
         return nn.MSELoss()
     
-    if args.task_type == 'multiclass':
+    if data_info['task_type'] == 'multiclass':
         return nn.CrossEntropyLoss()
     
-    raise ValueError(f'Dataset type "{args.dataset_type}" not supported.')
+    raise ValueError(f'Dataset type "{data_info["task_type"]}" not supported.')
 

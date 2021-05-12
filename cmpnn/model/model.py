@@ -13,11 +13,11 @@ class CMPNNEncoder(nn.Module):
 
 
 class FFN4Test(nn.Module):
-    def __init__(self, args):
+    def __init__(self, args, data_info):
         super().__init__()
         first_linear_dim = args.hidden_dim
         activation = get_activation_function(args.activation)
-        self.task_type = args.task_type
+        self.task_type = data_info['task_type']
 
         if self.task_type == 'classification':
             self.sigmoid = nn.Sigmoid()
@@ -29,7 +29,7 @@ class FFN4Test(nn.Module):
         ffn = [
             nn.Linear(first_linear_dim, args.ffn_hidden_dim),
             activation,
-            nn.Linear(args.ffn_hidden_dim, args.task_num)
+            nn.Linear(args.ffn_hidden_dim, data_info['task_num'])
         ]
 
         # Create FFN model

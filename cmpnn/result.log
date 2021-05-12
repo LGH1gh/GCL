@@ -1,0 +1,7 @@
+2021-05-12 17:51:46,050 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:93] - INFO: train data bbbp: 1631 | test data: 204 | val data: 204
+2021-05-12 17:51:46,614 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:93] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-12 17:51:47,066 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:93] - INFO: train data sider: 1141 | test data: 143 | val data: 143
+2021-05-12 17:51:47,533 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:93] - INFO: train data clintox: 1182 | test data: 148 | val data: 148
+2021-05-12 17:51:48,803 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:93] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-12 17:51:52,696 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:93] - INFO: train data toxcast: 6860 | test data: 858 | val data: 858
+2021-05-12 17:53:29,118 - main.py[line:98] - INFO: Epoch 0's bbbp auc score: 0.8121693121693121
