@@ -82,18 +82,18 @@ if __name__ == '__main__':
     args.device = torch.device(f"cuda:2" if torch.cuda.is_available() else "cpu")
     
     train_dataloader, test_dataloader, val_dataloader = load_dataloader(args)
-    # cl_dataloader = load_cl_dataloader(args)
+    cl_dataloader = load_cl_dataloader(args)
 
 
     encoder = CMPNNEncoder(args).to(args.device)
-    # cl_loss = ContrastiveLoss(args).to(args.device)
-    # encoder_optimizer = build_optimizer(encoder, args.cl_init_lr)
-    # encoder_scheduler = build_lr_scheduler(encoder_optimizer, args.cl_steps_per_epoch, args.cl_init_lr, args.cl_max_lr, args.cl_final_lr, args)
+    cl_loss = ContrastiveLoss(args).to(args.device)
+    encoder_optimizer = build_optimizer(encoder, args.cl_init_lr)
+    encoder_scheduler = build_lr_scheduler(encoder_optimizer, args.cl_steps_per_epoch, args.cl_init_lr, args.cl_max_lr, args.cl_final_lr, args)
     metric_func = get_metric_func(args.metric)
     for idx in range(100):
         if idx == 0:
             evaluate_encoder(idx, encoder, train_dataloader, val_dataloader, metric_func, 5, args)
 
-        # loss = train_encoder(idx, encoder, cl_loss, encoder_optimizer, encoder_scheduler, cl_dataloader)
-        # if loss < 0.4 and idx % 5 == 0:
-        #     evaluate_encoder(idx, encoder, train_dataloader, val_dataloader, metric_func, 5, args)
+        loss = train_encoder(idx, encoder, cl_loss, encoder_optimizer, encoder_scheduler, cl_dataloader)
+        if loss < 0.4 and idx % 5 == 0:
+            evaluate_encoder(idx, encoder, train_dataloader, val_dataloader, metric_func, 5, args)

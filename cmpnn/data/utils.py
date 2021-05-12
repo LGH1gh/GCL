@@ -11,7 +11,8 @@ DATA_INFO = {
     'zinc15_250K_2D': {'columns': ['smiles']},
     'zinc15_1M_2D': {'columns': ['smiles']},
     'bbbp': {'task_num': 1, 'task_type': 'classification', 'columns': ['smiles', 'p_np']},
-    'clintox': {'task_num': 2, 'task_type': 'classification', 'columns': ['smiles', 'FDA_APPROVED', 'CT_TOX']}
+    'clintox': {'task_num': 2, 'task_type': 'classification', 'columns': ['smiles', 'FDA_APPROVED', 'CT_TOX']},
+    'tox21': {'task_num': 12, 'task_type': 'classification', 'columns': ['smiles', 'NR-AR', 'NR-AR-LBD', 'NR-AhR', 'NR-Aromatase', 'NR-ER', 'NR-ER-LBD', 'NR-PPAR-gamma', 'SR-ARE', 'SR-ATAD5', 'SR-HSE', 'SR-MMP', 'SR-p53']}
 }
 
 def filter_invalid_smiles(data: MoleculeDataset) -> MoleculeDataset:
