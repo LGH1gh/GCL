@@ -29,12 +29,15 @@ def train_classifer(encoder, classifier, dataloader, classifier_optimizer, class
     classifier.train()
     with tqdm(enumerate(dataloader), desc='Classifier', total=args.train_steps_per_epoch) as batch:
         for idx, (x, y) in batch:
-            y = y.to(args.device)
+            mask = torch.Tensor([[not val.isnan() for val in col] for col in y]).to(args.device)
+            y = torch.Tensor([[0 if val.isnan() else val for val in col] for col in y]).to(args.device)
             classifier_optimizer.zero_grad()
             with torch.no_grad():
                 x_hat = encoder(x)
             y_hat = classifier(x_hat)
             loss = criterion(y_hat, y)
+            loss = torch.where(torch.isnan(loss), torch.full_like(loss, 0), loss)
+            loss = loss.sum() / mask.sum()
             loss.backward()
             torch.nn.utils.clip_grad_norm_(classifier.parameters(), 0.1)
             batch.set_postfix(loss=loss.item())
@@ -48,11 +51,33 @@ def evaluate_concat(encoder, classifier, dataloader, metric_func, args):
         target, pred = [], []
         for idx, (x, y) in enumerate(dataloader):
             y_hat = classifier(encoder(x)).reshape(y.size())
-            pred.append(y_hat)
+            pred.append(y_hat.cpu())
             target.append(y)
-        pred = torch.cat(pred).cpu()
-        target = torch.cat(target).cpu()
-        return metric_func(target, pred)
+        pred = torch.cat(pred)
+        target = torch.cat(target)
+        valid_preds = [[] for _ in range(args.task_num)]
+        valid_targets = [[] for _ in range(args.task_num)]
+        for i in range(args.task_num):
+            for j in range(len(pred)):
+                if not target[j][i].isnan():  # Skip those without targets
+                    valid_preds[i].append(pred[j][i])
+                    valid_targets[i].append(target[j][i])
+        
+        results = []
+        for i in range(args.task_num):
+            if args.task_type == 'classification':
+                mark = False
+                if all(target == 0 for target in valid_targets[i]) or all(target == 1 for target in valid_targets[i]):
+                    mark = True
+                    logger.info('Warning: Found a task with targets all 0s or all 1s')
+                if all(pred == 0 for pred in valid_preds[i]) or all(pred == 1 for pred in valid_preds[i]):
+                    mark = True
+                    logger.info('Warning: Found a task with predictions all 0s or all 1s')
+                if mark:
+                    results.append(float('nan'))
+                    continue
+                results.append(metric_func(valid_targets[i], valid_preds[i]))
+        return np.nanmean(results)
 
 
 def evaluate_encoder(epoch_idx, encoder, train_dataloader, val_dataloader, metric_func, max_patience, args):
@@ -94,6 +119,6 @@ if __name__ == '__main__':
         if idx == 0:
             evaluate_encoder(idx, encoder, train_dataloader, val_dataloader, metric_func, 5, args)
 
-        loss = train_encoder(idx, encoder, cl_loss, encoder_optimizer, encoder_scheduler, cl_dataloader)
-        if loss < 0.4 and idx % 5 == 0:
-            evaluate_encoder(idx, encoder, train_dataloader, val_dataloader, metric_func, 5, args)
+        # loss = train_encoder(idx, encoder, cl_loss, encoder_optimizer, encoder_scheduler, cl_dataloader)
+        # if loss < 0.4 and idx % 5 == 0:
+        #     evaluate_encoder(idx, encoder, train_dataloader, val_dataloader, metric_func, 5, args)
