@@ -5,3 +5,27 @@
 2021-05-12 17:51:48,803 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:93] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
 2021-05-12 17:51:52,696 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:93] - INFO: train data toxcast: 6860 | test data: 858 | val data: 858
 2021-05-12 17:53:29,118 - main.py[line:98] - INFO: Epoch 0's bbbp auc score: 0.8121693121693121
+2021-05-13 15:25:49,386 - main.py[line:105] - INFO: ####################################################################################################
+2021-05-13 15:25:49,963 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:95] - INFO: train data bbbp: 1631 | test data: 204 | val data: 204
+2021-05-13 15:25:50,453 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:95] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-13 15:25:50,845 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:95] - INFO: train data sider: 1141 | test data: 143 | val data: 143
+2021-05-13 15:25:51,197 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:95] - INFO: train data clintox: 1182 | test data: 148 | val data: 148
+2021-05-13 15:25:52,428 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:95] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-13 15:25:56,214 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:95] - INFO: train data toxcast: 6860 | test data: 858 | val data: 858
+2021-05-13 15:27:28,151 - main.py[line:105] - INFO: ####################################################################################################
+2021-05-13 15:27:28,666 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:95] - INFO: train data bbbp: 1631 | test data: 204 | val data: 204
+2021-05-13 15:28:22,801 - main.py[line:105] - INFO: ####################################################################################################
+2021-05-13 15:28:23,234 - /home/wzy/code/graph-classification/contrastive-learning/cmpnn/data/utils.py[line:95] - INFO: train data bbbp: 1631 | test data: 204 | val data: 204
+2021-05-13 15:32:13,271 - main.py[line:105] - INFO: ####################################################################################################
+2021-05-13 15:32:45,869 - main.py[line:105] - INFO: ####################################################################################################
+2021-05-13 15:33:03,676 - main.py[line:105] - INFO: ####################################################################################################
+2021-05-13 15:34:02,753 - main.py[line:105] - INFO: ####################################################################################################
+2021-05-13 15:53:45,109 - main.py[line:105] - INFO: ####################################################################################################
+2021-05-13 15:55:47,182 - main.py[line:105] - INFO: ####################################################################################################
+2021-05-13 15:56:54,272 - main.py[line:105] - INFO: ####################################################################################################
+2021-05-13 16:00:59,598 - main.py[line:105] - INFO: ####################################################################################################
+2021-05-13 16:01:34,499 - main.py[line:105] - INFO: ####################################################################################################
+2021-05-13 16:02:09,336 - main.py[line:105] - INFO: ####################################################################################################
+2021-05-13 18:50:51,223 - main.py[line:105] - INFO: ####################################################################################################
+2021-05-13 18:51:11,015 - main.py[line:105] - INFO: ####################################################################################################
+2021-05-13 18:56:00,088 - main.py[line:105] - INFO: ####################################################################################################

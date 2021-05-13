@@ -6,7 +6,7 @@ def parse_argument() -> Namespace:
     parser = ArgumentParser()
     parser.add_argument('--seed', type=int, default=0)
     # parser.add_argument('--data_name', type=str, default='toxcast')
-    parser.add_argument('--data_name', type=Tuple, default=('bbbp',)) #'bace', 'sider', 'clintox', 'tox21', 'toxcast'))
+    parser.add_argument('--data_name', type=Tuple, default=('bbbp', 'bace', 'sider', 'clintox', 'tox21', 'toxcast'))
     parser.add_argument('--data_dir', type=str, default='../../data')
     parser.add_argument('--feature_scaling', type=bool, default=True)
     parser.add_argument('--split_type', type=str, default='random')

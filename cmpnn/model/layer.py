@@ -56,6 +56,10 @@ class MPNEncoder(nn.Module):
         f_atoms, f_bonds, a2b, b2a, b2revb = (
                 f_atoms.to(self.args.device), f_bonds.to(self.args.device), 
                 a2b.to(self.args.device), b2a.to(self.args.device), b2revb.to(self.args.device))
+        print(a2b)
+        print(b2a)
+        print(b2revb)
+
         # Input
         input_atom = self.W_i_atom(f_atoms)  # num_atoms x hidden_size
         input_atom = self.act_func(input_atom)
@@ -67,6 +71,9 @@ class MPNEncoder(nn.Module):
         # Message passing
         for depth in range(self.depth - 1):
             agg_message = index_select_ND(message_bond, a2b)
+            # print(agg_message)
+            print(agg_message.sum(dim=1).size())
+            print(agg_message.max(dim=1)[0].size())
             agg_message = agg_message.sum(dim=1) * agg_message.max(dim=1)[0]
             message_atom = message_atom + agg_message
             
@@ -153,3 +160,5 @@ class MPN(nn.Module):
         batch = mol2graph(batch, self.args)
         output = self.encoder.forward(batch)
         return output
+
+

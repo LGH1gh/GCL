@@ -5,12 +5,10 @@ def index_select_ND(source: torch.Tensor, index: torch.Tensor) -> torch.Tensor:
 
     index_size = index.size()  # (num_atoms/num_bonds, max_num_bonds)
     # print(index_size)
-    # print(source.size())
     suffix_dim = source.size()[1:]  # (hidden_size,)
     # print(suffix_dim)
     final_size = index_size + suffix_dim  # (num_atoms/num_bonds, max_num_bonds, hidden_size)
     # print(final_size)
-    # print(index.view(-1))
     target = source.index_select(dim=0, index=index.view(-1))  # (num_atoms/num_bonds * max_num_bonds, hidden_size)
     target = target.view(final_size)  # (num_atoms/num_bonds, max_num_bonds, hidden_size)
     target[index==0] = 0

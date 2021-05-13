@@ -1,0 +1,27 @@
+2021-05-13 14:42:03,816 - main.py[line:12] - INFO: ####################################################################################################
+2021-05-13 14:42:57,150 - main.py[line:12] - INFO: ####################################################################################################
+2021-05-13 14:43:16,076 - main.py[line:12] - INFO: ####################################################################################################
+2021-05-13 14:43:22,198 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data bbbp: 2 | test data: 2 | val data: 2
+2021-05-13 14:43:28,573 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data bace: 2 | test data: 2 | val data: 2
+2021-05-13 14:43:33,736 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data sider: 2 | test data: 2 | val data: 2
+2021-05-13 14:43:37,861 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data clintox: 2 | test data: 2 | val data: 2
+2021-05-13 14:43:55,061 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data tox21: 2 | test data: 2 | val data: 2
+2021-05-13 14:44:15,203 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data toxcast: 2 | test data: 2 | val data: 2
+2021-05-13 14:44:41,475 - main.py[line:12] - INFO: ####################################################################################################
+2021-05-13 14:44:47,624 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data bbbp: 2 | test data: 2 | val data: 2
+2021-05-13 14:44:53,424 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data bace: 2 | test data: 2 | val data: 2
+2021-05-13 14:44:58,850 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data sider: 2 | test data: 2 | val data: 2
+2021-05-13 14:45:03,272 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data clintox: 2 | test data: 2 | val data: 2
+2021-05-13 14:45:22,926 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data tox21: 2 | test data: 2 | val data: 2
+2021-05-13 14:45:46,289 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data toxcast: 2 | test data: 2 | val data: 2
+2021-05-13 14:46:56,196 - main.py[line:12] - INFO: ####################################################################################################
+2021-05-13 14:47:01,926 - main.py[line:12] - INFO: ####################################################################################################
+2021-05-13 14:47:08,236 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data bbbp: 2 | test data: 2 | val data: 2
+2021-05-13 14:47:14,624 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data bace: 2 | test data: 2 | val data: 2
+2021-05-13 14:47:19,835 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data sider: 2 | test data: 2 | val data: 2
+2021-05-13 14:47:24,144 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data clintox: 2 | test data: 2 | val data: 2
+2021-05-13 14:47:34,003 - main.py[line:12] - INFO: ####################################################################################################
+2021-05-13 14:48:05,288 - main.py[line:12] - INFO: ####################################################################################################
+2021-05-13 14:48:23,178 - main.py[line:12] - INFO: ####################################################################################################
+2021-05-13 14:49:09,348 - main.py[line:12] - INFO: ####################################################################################################
+2021-05-13 14:49:09,375 - /home/wzy/code/graph-classification/contrastive-learning/dgl/model/cmpnn.py[line:14] - INFO: {'psize': 4096, 'depth': 1, 'branch_pages': 0, 'leaf_pages': 1, 'overflow_pages': 0, 'entries': 1}

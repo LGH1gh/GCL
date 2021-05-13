@@ -1,21 +1,20 @@
-import torch
-from tqdm import tqdm
-import numpy as np
-from typing import Tuple
-
-from utils import parse_argument, set_seed, build_lr_scheduler, build_optimizer, get_metric_func, get_loss_func, get_loss_func
+from utils import parse_argument, set_seed, build_lr_scheduler, build_optimizer, get_metric_func, get_loss_func
 from data import load_dataloader, load_cl_dataloader
-from model import CMPNNEncoder, FFN4Test, ContrastiveLoss
+from model import Encoder, FFN4Test, ContrastiveLoss
+import numpy as np
+from tqdm import tqdm
+import lmdb
+import pickle
+import torch
 import logging
+import time
 logger = logging.getLogger()
 
 def train_encoder(epoch_idx, encoder, criterion, encoder_optimizer, encoder_scheduler, dataloader):
     encoder.train()
     losses = []
     with tqdm(enumerate(dataloader), desc=f'Epoch {epoch_idx}', total=len(dataloader), ncols=100) as batch:
-        for idx, (x, y) in batch:
-            print(x)
-            exit()
+        for idx, x in batch:
             encoder_optimizer.zero_grad()
             y_hat = encoder(x)
             loss = criterion(y_hat)
@@ -27,7 +26,7 @@ def train_encoder(epoch_idx, encoder, criterion, encoder_optimizer, encoder_sche
             losses.append(loss.item())
     return np.mean(losses)
 
-def train_classifer(encoder, data_info, classifier, dataloader, classifier_optimizer, classifier_schedule, criterion, args):
+def train_classifer(encoder, classifier, dataloader, classifier_optimizer, classifier_schedule, criterion, args):
     encoder.eval()
     classifier.train()
     for idx, (x, y) in enumerate(dataloader):
@@ -88,7 +87,7 @@ def evaluate_encoder(epoch_idx, encoder, data_info, train_dataloader, val_datalo
     classifier_optimizer = build_optimizer(classifier, args.init_lr)
     classifier_scheduler = build_lr_scheduler(classifier_optimizer, data_info['train_steps_per_epoch'], args.init_lr, args.max_lr, args.final_lr, args)
     while True:
-        train_classifer(encoder, data_info, classifier, train_dataloader, classifier_optimizer, classifier_scheduler, classifier_loss, args)
+        train_classifer(encoder, classifier, train_dataloader, classifier_optimizer, classifier_scheduler, classifier_loss, args)
         result = evaluate_concat(encoder, classifier, data_info, val_dataloader, metric_func)
         if best_result < result:
             best_result = result
@@ -100,39 +99,41 @@ def evaluate_encoder(epoch_idx, encoder, data_info, train_dataloader, val_datalo
     logger.info(f'Epoch {epoch_idx}\'s {data_info["data_name"]} {args.metric} score: {best_result}')
 
 
-if __name__ == '__main__':
-    logging.basicConfig(format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s', level=logging.INFO, filename='result.log')
+def main():
+    logging.basicConfig(format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s', level=logging.INFO)#, filename='result.log')
     logger.info('#'*100)
     args = parse_argument()
-    args.device = torch.device(f"cuda:2" if torch.cuda.is_available() else "cpu")
     set_seed(args.seed)
-    encoder = CMPNNEncoder(args).to(args.device)
-    encoder(['C(C1CCCCC1)NN'])
-    # 
-    # train_dataloader_list, test_dataloader_list, val_dataloader_list, data_info_list = [], [], [], []
-    # if isinstance(args.data_name, Tuple):
-    #     for name in args.data_name:
-    #         train_dataloader, test_dataloader, val_dataloader, data_info = load_dataloader(args, name)
-    #         train_dataloader_list.append(train_dataloader)
-    #         test_dataloader_list.append(test_dataloader)
-    #         val_dataloader_list.append(val_dataloader)
-    #         data_info_list.append(data_info)
-    # cl_dataloader = load_cl_dataloader(args)
-    # data_num = len(args.data_name)
+    args.device = torch.device(f"cuda:0" if torch.cuda.is_available() else "cpu")
+
+    train_dataloader_list, val_dataloader_list, test_dataloader_list, data_info_list = [], [], [], []
+    for name in args.data_name:
+        train_dataloader, val_dataloader, test_dataloader, data_info = load_dataloader(args, name)
+        train_dataloader_list.append(train_dataloader)
+        val_dataloader_list.append(val_dataloader)
+        test_dataloader_list.append(test_dataloader)
+        data_info_list.append(data_info)
+
+    data_num = len(args.data_name)
+    cl_dataloader, cl_data_info = load_cl_dataloader(args)
+    start = time.time()
+    encoder = Encoder(args)
+    cl_loss = ContrastiveLoss(args).to(args.device)
+    encoder_optimizer = build_optimizer(encoder, args.cl_init_lr)
+    encoder_scheduler = build_lr_scheduler(encoder_optimizer, args.cl_steps_per_epoch, args.cl_init_lr, args.cl_max_lr, args.cl_final_lr, args)
+    metric_func = get_metric_func(args.metric)
+
+    for idx in range(100):
+        if idx == 0:
+            for i in range(data_num):
+                evaluate_encoder(-1, encoder, data_info_list[i], train_dataloader_list[i], val_dataloader_list[i], metric_func, 5, args)
+
+        loss = train_encoder(idx, encoder, cl_loss, encoder_optimizer, encoder_scheduler, cl_dataloader)
+        logger.info(f'Epoch {idx}\'s Contrastive Loss: {loss}' )
+        for i in range(data_num):
+            evaluate_encoder(idx, encoder, data_info_list[i], train_dataloader_list[i], val_dataloader_list[i], metric_func, 5, args)
 
 
-    # encoder = CMPNNEncoder(args).to(args.device)
-    # cl_loss = ContrastiveLoss(args).to(args.device)
-    # encoder_optimizer = build_optimizer(encoder, args.cl_init_lr)
-    # encoder_scheduler = build_lr_scheduler(encoder_optimizer, args.cl_steps_per_epoch, args.cl_init_lr, args.cl_max_lr, args.cl_final_lr, args)
-    # metric_func = get_metric_func(args.metric)
 
-    # for idx in range(100):
-    #     # if idx == 0:
-    #     #     for i in range(data_num):
-    #     #         evaluate_encoder(-1, encoder, data_info_list[i], train_dataloader_list[i], val_dataloader_list[i], metric_func, 5, args)
-
-    #     loss = train_encoder(idx, encoder, cl_loss, encoder_optimizer, encoder_scheduler, cl_dataloader)
-    #     logger.info('Epoch {idx}\'s Contrastive Loss: {loss}' )
-    #     for i in range(data_num):
-    #         evaluate_encoder(idx, encoder, data_info_list[i], train_dataloader_list[i], val_dataloader_list[i], metric_func, 5, args)
+if __name__ == '__main__':
+    main()
