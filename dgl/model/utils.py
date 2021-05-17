@@ -15,7 +15,7 @@ def index_select_ND(source: torch.Tensor, index: torch.Tensor) -> torch.Tensor:
     return target
 
 def get_activation_function(activation: str) -> nn.Module:
-    if activation == 'ReLU':
+    if activation == 'relu':
         return nn.ReLU()
     elif activation == 'LeakyReLU':
         return nn.LeakyReLU(0.1)

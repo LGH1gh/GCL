@@ -1,27 +1,598 @@
-2021-05-13 14:42:03,816 - main.py[line:12] - INFO: ####################################################################################################
-2021-05-13 14:42:57,150 - main.py[line:12] - INFO: ####################################################################################################
-2021-05-13 14:43:16,076 - main.py[line:12] - INFO: ####################################################################################################
-2021-05-13 14:43:22,198 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data bbbp: 2 | test data: 2 | val data: 2
-2021-05-13 14:43:28,573 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data bace: 2 | test data: 2 | val data: 2
-2021-05-13 14:43:33,736 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data sider: 2 | test data: 2 | val data: 2
-2021-05-13 14:43:37,861 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data clintox: 2 | test data: 2 | val data: 2
-2021-05-13 14:43:55,061 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data tox21: 2 | test data: 2 | val data: 2
-2021-05-13 14:44:15,203 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data toxcast: 2 | test data: 2 | val data: 2
-2021-05-13 14:44:41,475 - main.py[line:12] - INFO: ####################################################################################################
-2021-05-13 14:44:47,624 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data bbbp: 2 | test data: 2 | val data: 2
-2021-05-13 14:44:53,424 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data bace: 2 | test data: 2 | val data: 2
-2021-05-13 14:44:58,850 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data sider: 2 | test data: 2 | val data: 2
-2021-05-13 14:45:03,272 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data clintox: 2 | test data: 2 | val data: 2
-2021-05-13 14:45:22,926 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data tox21: 2 | test data: 2 | val data: 2
-2021-05-13 14:45:46,289 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data toxcast: 2 | test data: 2 | val data: 2
-2021-05-13 14:46:56,196 - main.py[line:12] - INFO: ####################################################################################################
-2021-05-13 14:47:01,926 - main.py[line:12] - INFO: ####################################################################################################
-2021-05-13 14:47:08,236 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data bbbp: 2 | test data: 2 | val data: 2
-2021-05-13 14:47:14,624 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data bace: 2 | test data: 2 | val data: 2
-2021-05-13 14:47:19,835 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data sider: 2 | test data: 2 | val data: 2
-2021-05-13 14:47:24,144 - /home/wzy/code/graph-classification/contrastive-learning/dgl/data/dataset.py[line:118] - INFO: train data clintox: 2 | test data: 2 | val data: 2
-2021-05-13 14:47:34,003 - main.py[line:12] - INFO: ####################################################################################################
-2021-05-13 14:48:05,288 - main.py[line:12] - INFO: ####################################################################################################
-2021-05-13 14:48:23,178 - main.py[line:12] - INFO: ####################################################################################################
-2021-05-13 14:49:09,348 - main.py[line:12] - INFO: ####################################################################################################
-2021-05-13 14:49:09,375 - /home/wzy/code/graph-classification/contrastive-learning/dgl/model/cmpnn.py[line:14] - INFO: {'psize': 4096, 'depth': 1, 'branch_pages': 0, 'leaf_pages': 1, 'overflow_pages': 0, 'entries': 1}
+2021-05-16 15:40:35,478 - [line:120] - INFO: ####################################################################################################
+2021-05-16 15:40:40,981 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 15:40:44,630 - [line:150] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-16 15:40:47,839 - [line:150] - INFO: train data sider: 1141 | test data: 144 | val data: 142
+2021-05-16 15:40:50,711 - [line:150] - INFO: train data clintox: 1182 | test data: 149 | val data: 147
+2021-05-16 15:41:02,302 - [line:150] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-16 15:41:13,651 - [line:115] - INFO: Epoch -1's bbbp auc score: 0.8668947055324212
+2021-05-16 15:41:17,962 - [line:115] - INFO: Epoch -1's bace auc score: 0.5077519379844961
+2021-05-16 15:41:33,918 - [line:115] - INFO: Epoch -1's sider auc score: 0.5701722419712539
+2021-05-16 15:41:36,532 - [line:115] - INFO: Epoch -1's clintox auc score: 0.6466308821245534
+2021-05-16 15:44:33,771 - [line:115] - INFO: Epoch -1's tox21 auc score: 0.7160786269019712
+2021-05-16 15:47:32,079 - [line:151] - INFO: Epoch 0's Contrastive Loss: 3.5110882818698883
+2021-05-16 15:47:35,540 - [line:115] - INFO: Epoch 0's bbbp auc score: 0.8593099345627603
+2021-05-16 15:47:37,868 - [line:115] - INFO: Epoch 0's bace auc score: 0.540169133192389
+2021-05-16 15:47:48,151 - [line:115] - INFO: Epoch 0's sider auc score: 0.5530602471469067
+2021-05-16 15:47:51,655 - [line:115] - INFO: Epoch 0's clintox auc score: 0.6169031811357871
+2021-05-16 15:49:01,524 - [line:115] - INFO: Epoch 0's tox21 auc score: 0.7034581498324536
+2021-05-16 15:51:58,396 - [line:151] - INFO: Epoch 1's Contrastive Loss: 1.0135039180517196
+2021-05-16 15:52:02,024 - [line:115] - INFO: Epoch 1's bbbp auc score: 0.8561867935752528
+2021-05-16 15:52:04,493 - [line:115] - INFO: Epoch 1's bace auc score: 0.51092318534179
+2021-05-16 15:52:23,339 - [line:115] - INFO: Epoch 1's sider auc score: 0.5610579156510015
+2021-05-16 15:52:26,400 - [line:115] - INFO: Epoch 1's clintox auc score: 0.5504105839416058
+2021-05-16 15:53:58,416 - [line:115] - INFO: Epoch 1's tox21 auc score: 0.7118015571044282
+2021-05-16 15:56:55,506 - [line:151] - INFO: Epoch 2's Contrastive Loss: 0.6066420391201973
+2021-05-16 15:57:01,023 - [line:115] - INFO: Epoch 2's bbbp auc score: 0.8549970255800119
+2021-05-16 15:57:57,760 - [line:115] - INFO: Epoch 2's bace auc score: 0.5984848484848484
+2021-05-16 15:58:07,903 - [line:115] - INFO: Epoch 2's sider auc score: 0.5563558847422355
+2021-05-16 15:58:11,002 - [line:115] - INFO: Epoch 2's clintox auc score: 0.559874398198478
+2021-05-16 15:59:10,379 - [line:115] - INFO: Epoch 2's tox21 auc score: 0.7014577294127348
+2021-05-16 16:02:08,260 - [line:151] - INFO: Epoch 3's Contrastive Loss: 0.46734600991010666
+2021-05-16 16:02:15,280 - [line:115] - INFO: Epoch 3's bbbp auc score: 0.8634741225461035
+2021-05-16 16:02:17,730 - [line:115] - INFO: Epoch 3's bace auc score: 0.4548978153629316
+2021-05-16 16:02:29,049 - [line:115] - INFO: Epoch 3's sider auc score: 0.5754539286795588
+2021-05-16 16:02:32,091 - [line:115] - INFO: Epoch 3's clintox auc score: 0.5441628487860434
+2021-05-16 16:03:25,491 - [line:115] - INFO: Epoch 3's tox21 auc score: 0.7019582970427053
+2021-05-16 16:06:23,114 - [line:151] - INFO: Epoch 4's Contrastive Loss: 0.3969531808793545
+2021-05-16 16:06:30,156 - [line:115] - INFO: Epoch 4's bbbp auc score: 0.8581201665675193
+2021-05-16 16:06:54,217 - [line:115] - INFO: Epoch 4's bace auc score: 0.5930232558139534
+2021-05-16 16:07:03,292 - [line:115] - INFO: Epoch 4's sider auc score: 0.5499016653229177
+2021-05-16 16:07:06,013 - [line:115] - INFO: Epoch 4's clintox auc score: 0.5650608919604494
+2021-05-16 16:08:12,215 - [line:115] - INFO: Epoch 4's tox21 auc score: 0.7051322076990026
+2021-05-16 16:11:09,823 - [line:151] - INFO: Epoch 5's Contrastive Loss: 0.35487456515431404
+2021-05-16 16:11:16,739 - [line:115] - INFO: Epoch 5's bbbp auc score: 0.8567816775728733
+2021-05-16 16:11:19,168 - [line:115] - INFO: Epoch 5's bace auc score: 0.5135658914728682
+2021-05-16 16:11:30,678 - [line:115] - INFO: Epoch 5's sider auc score: 0.5756270870650267
+2021-05-16 16:11:33,278 - [line:115] - INFO: Epoch 5's clintox auc score: 0.5718651317492364
+2021-05-16 16:12:23,866 - [line:115] - INFO: Epoch 5's tox21 auc score: 0.7079368369876436
+2021-05-16 16:15:21,436 - [line:151] - INFO: Epoch 6's Contrastive Loss: 0.3266312454640865
+2021-05-16 16:15:29,794 - [line:115] - INFO: Epoch 6's bbbp auc score: 0.8538072575847709
+2021-05-16 16:15:32,348 - [line:115] - INFO: Epoch 6's bace auc score: 0.48009161381254406
+2021-05-16 16:15:41,323 - [line:115] - INFO: Epoch 6's sider auc score: 0.558128821016229
+2021-05-16 16:15:44,350 - [line:115] - INFO: Epoch 6's clintox auc score: 0.5544873039291816
+2021-05-16 16:16:40,123 - [line:115] - INFO: Epoch 6's tox21 auc score: 0.7019817602465146
+2021-05-16 16:19:38,021 - [line:151] - INFO: Epoch 7's Contrastive Loss: 0.30697263807058334
+2021-05-16 16:19:44,158 - [line:115] - INFO: Epoch 7's bbbp auc score: 0.8552944675788221
+2021-05-16 16:20:08,965 - [line:115] - INFO: Epoch 7's bace auc score: 0.6101127554615927
+2021-05-16 16:20:21,664 - [line:115] - INFO: Epoch 7's sider auc score: 0.5608854412685839
+2021-05-16 16:20:24,735 - [line:115] - INFO: Epoch 7's clintox auc score: 0.5523162887611948
+2021-05-16 16:21:15,901 - [line:115] - INFO: Epoch 7's tox21 auc score: 0.6998680679851187
+2021-05-16 16:24:13,314 - [line:151] - INFO: Epoch 8's Contrastive Loss: 0.2927920404076576
+2021-05-16 16:24:20,528 - [line:115] - INFO: Epoch 8's bbbp auc score: 0.857822724568709
+2021-05-16 16:24:46,189 - [line:115] - INFO: Epoch 8's bace auc score: 0.5993657505285412
+2021-05-16 16:24:57,461 - [line:115] - INFO: Epoch 8's sider auc score: 0.56893943158451
+2021-05-16 16:25:00,551 - [line:115] - INFO: Epoch 8's clintox auc score: 0.5367115105865301
+2021-05-16 16:25:56,617 - [line:115] - INFO: Epoch 8's tox21 auc score: 0.7154476660050184
+2021-05-16 16:28:54,173 - [line:151] - INFO: Epoch 9's Contrastive Loss: 0.2817068529129028
+2021-05-16 16:28:59,967 - [line:115] - INFO: Epoch 9's bbbp auc score: 0.8561867935752528
+2021-05-16 16:29:23,328 - [line:115] - INFO: Epoch 9's bace auc score: 0.6118745595489781
+2021-05-16 16:29:33,702 - [line:115] - INFO: Epoch 9's sider auc score: 0.569263856039104
+2021-05-16 16:29:36,830 - [line:115] - INFO: Epoch 9's clintox auc score: 0.5678110602060362
+2021-05-16 16:30:26,563 - [line:115] - INFO: Epoch 9's tox21 auc score: 0.7094706846043365
+2021-05-16 16:33:23,955 - [line:151] - INFO: Epoch 10's Contrastive Loss: 0.2732566921412945
+2021-05-16 16:33:32,176 - [line:115] - INFO: Epoch 10's bbbp auc score: 0.858863771564545
+2021-05-16 16:34:06,678 - [line:115] - INFO: Epoch 10's bace auc score: 0.6386539816772376
+2021-05-16 16:34:17,015 - [line:115] - INFO: Epoch 10's sider auc score: 0.5727461750146398
+2021-05-16 16:34:19,652 - [line:115] - INFO: Epoch 10's clintox auc score: 0.6073390666252524
+2021-05-16 16:34:59,066 - [line:115] - INFO: Epoch 10's tox21 auc score: 0.7062132065596723
+2021-05-16 16:37:56,931 - [line:151] - INFO: Epoch 11's Contrastive Loss: 0.26661777049303054
+2021-05-16 16:38:03,271 - [line:115] - INFO: Epoch 11's bbbp auc score: 0.862730517549078
+2021-05-16 16:38:18,707 - [line:115] - INFO: Epoch 11's bace auc score: 0.6152219873150105
+2021-05-16 16:38:29,986 - [line:115] - INFO: Epoch 11's sider auc score: 0.5779470961074543
+2021-05-16 16:38:32,579 - [line:115] - INFO: Epoch 11's clintox auc score: 0.5882464280167727
+2021-05-16 16:39:24,599 - [line:115] - INFO: Epoch 11's tox21 auc score: 0.7083575429353558
+2021-05-16 16:42:21,772 - [line:151] - INFO: Epoch 12's Contrastive Loss: 0.26076643288135526
+2021-05-16 16:42:29,385 - [line:115] - INFO: Epoch 12's bbbp auc score: 0.8593099345627603
+2021-05-16 16:42:59,141 - [line:115] - INFO: Epoch 12's bace auc score: 0.6222692036645525
+2021-05-16 16:43:08,296 - [line:115] - INFO: Epoch 12's sider auc score: 0.5574698757207985
+2021-05-16 16:43:11,464 - [line:115] - INFO: Epoch 12's clintox auc score: 0.5214917559662473
+2021-05-16 16:44:14,499 - [line:115] - INFO: Epoch 12's tox21 auc score: 0.7068777269601064
+2021-05-16 16:47:10,812 - [line:151] - INFO: Epoch 13's Contrastive Loss: 0.2557841111719608
+2021-05-16 16:47:16,283 - [line:115] - INFO: Epoch 13's bbbp auc score: 0.8511302795954788
+2021-05-16 16:47:41,671 - [line:115] - INFO: Epoch 13's bace auc score: 0.6289640591966174
+2021-05-16 16:47:51,895 - [line:115] - INFO: Epoch 13's sider auc score: 0.5765966640802882
+2021-05-16 16:47:54,501 - [line:115] - INFO: Epoch 13's clintox auc score: 0.6139653543510898
+2021-05-16 16:48:50,963 - [line:115] - INFO: Epoch 13's tox21 auc score: 0.7136509031964845
+2021-05-16 16:51:49,211 - [line:151] - INFO: Epoch 14's Contrastive Loss: 0.25153453640639784
+2021-05-16 16:51:56,134 - [line:115] - INFO: Epoch 14's bbbp auc score: 0.8584176085663296
+2021-05-16 16:52:21,290 - [line:115] - INFO: Epoch 14's bace auc score: 0.6249119097956308
+2021-05-16 16:52:37,191 - [line:115] - INFO: Epoch 14's sider auc score: 0.5809276953717173
+2021-05-16 16:52:39,811 - [line:115] - INFO: Epoch 14's clintox auc score: 0.5730849122534556
+2021-05-16 16:53:22,886 - [line:115] - INFO: Epoch 14's tox21 auc score: 0.7084901226082283
+2021-05-16 16:56:20,186 - [line:151] - INFO: Epoch 15's Contrastive Loss: 0.24782537303864957
+2021-05-16 16:56:26,620 - [line:115] - INFO: Epoch 15's bbbp auc score: 0.8585663295657348
+2021-05-16 16:56:29,101 - [line:115] - INFO: Epoch 15's bace auc score: 0.4540169133192389
+2021-05-16 16:56:38,137 - [line:115] - INFO: Epoch 15's sider auc score: 0.5588804783448365
+2021-05-16 16:56:41,171 - [line:115] - INFO: Epoch 15's clintox auc score: 0.5456932365274111
+2021-05-16 16:57:20,622 - [line:115] - INFO: Epoch 15's tox21 auc score: 0.7126199135031862
+2021-05-16 17:00:18,208 - [line:151] - INFO: Epoch 16's Contrastive Loss: 0.24463078029453755
+2021-05-16 17:00:25,950 - [line:115] - INFO: Epoch 16's bbbp auc score: 0.8590124925639501
+2021-05-16 17:00:46,598 - [line:115] - INFO: Epoch 16's bace auc score: 0.6264975334742777
+2021-05-16 17:00:57,953 - [line:115] - INFO: Epoch 16's sider auc score: 0.5789591015435603
+2021-05-16 17:01:00,580 - [line:115] - INFO: Epoch 16's clintox auc score: 0.570244150230367
+2021-05-16 17:01:44,707 - [line:115] - INFO: Epoch 16's tox21 auc score: 0.7090580933259484
+2021-05-16 17:04:42,213 - [line:151] - INFO: Epoch 17's Contrastive Loss: 0.24171197257936
+2021-05-16 17:04:50,228 - [line:115] - INFO: Epoch 17's bbbp auc score: 0.8618381915526472
+2021-05-16 17:04:52,652 - [line:115] - INFO: Epoch 17's bace auc score: 0.49788583509513745
+2021-05-16 17:05:04,119 - [line:115] - INFO: Epoch 17's sider auc score: 0.5795494086203122
+2021-05-16 17:05:07,202 - [line:115] - INFO: Epoch 17's clintox auc score: 0.5461623828751877
+2021-05-16 17:05:50,279 - [line:115] - INFO: Epoch 17's tox21 auc score: 0.705534478398664
+2021-05-16 17:08:47,572 - [line:151] - INFO: Epoch 18's Contrastive Loss: 0.23900695472955705
+2021-05-16 17:08:56,708 - [line:115] - INFO: Epoch 18's bbbp auc score: 0.856335514574658
+2021-05-16 17:09:26,244 - [line:115] - INFO: Epoch 18's bace auc score: 0.6229739252995067
+2021-05-16 17:09:48,864 - [line:115] - INFO: Epoch 18's sider auc score: 0.571983356159827
+2021-05-16 17:09:51,548 - [line:115] - INFO: Epoch 18's clintox auc score: 0.5990723844282237
+2021-05-16 17:10:30,643 - [line:115] - INFO: Epoch 18's tox21 auc score: 0.7057484045578591
+2021-05-16 17:13:28,694 - [line:151] - INFO: Epoch 19's Contrastive Loss: 0.23621959991753103
+2021-05-16 17:13:36,084 - [line:115] - INFO: Epoch 19's bbbp auc score: 0.8506841165972635
+2021-05-16 17:14:04,530 - [line:115] - INFO: Epoch 19's bace auc score: 0.6284355179704016
+2021-05-16 17:14:13,453 - [line:115] - INFO: Epoch 19's sider auc score: 0.5618331305923076
+2021-05-16 17:14:16,516 - [line:115] - INFO: Epoch 19's clintox auc score: 0.5397949345136408
+2021-05-16 17:15:13,942 - [line:115] - INFO: Epoch 19's tox21 auc score: 0.7092130317097838
+2021-05-16 17:18:12,697 - [line:151] - INFO: Epoch 20's Contrastive Loss: 0.2343390465527773
+2021-05-16 17:18:20,040 - [line:115] - INFO: Epoch 20's bbbp auc score: 0.8569303985722784
+2021-05-16 17:18:39,628 - [line:115] - INFO: Epoch 20's bace auc score: 0.6358350951374206
+2021-05-16 17:18:57,071 - [line:115] - INFO: Epoch 20's sider auc score: 0.565167047059735
+2021-05-16 17:18:59,725 - [line:115] - INFO: Epoch 20's clintox auc score: 0.6156316327587099
+2021-05-16 17:19:43,691 - [line:115] - INFO: Epoch 20's tox21 auc score: 0.7075853833878024
+2021-05-16 17:22:40,163 - [line:151] - INFO: Epoch 21's Contrastive Loss: 0.23206764027476312
+2021-05-16 17:22:49,613 - [line:115] - INFO: Epoch 21's bbbp auc score: 0.8616894705532422
+2021-05-16 17:22:52,140 - [line:115] - INFO: Epoch 21's bace auc score: 0.5380549682875264
+2021-05-16 17:23:03,675 - [line:115] - INFO: Epoch 21's sider auc score: 0.5779893795000497
+2021-05-16 17:23:06,323 - [line:115] - INFO: Epoch 21's clintox auc score: 0.5802224077237665
+2021-05-16 17:24:04,277 - [line:115] - INFO: Epoch 21's tox21 auc score: 0.7102038356957358
+2021-05-16 17:27:01,607 - [line:151] - INFO: Epoch 22's Contrastive Loss: 0.23020521335303784
+2021-05-16 17:27:09,845 - [line:115] - INFO: Epoch 22's bbbp auc score: 0.8631766805472932
+2021-05-16 17:27:52,579 - [line:115] - INFO: Epoch 22's bace auc score: 0.6504580690627202
+2021-05-16 17:28:03,657 - [line:115] - INFO: Epoch 22's sider auc score: 0.5596315561399554
+2021-05-16 17:28:06,278 - [line:115] - INFO: Epoch 22's clintox auc score: 0.6046309597763628
+2021-05-16 17:29:01,999 - [line:115] - INFO: Epoch 22's tox21 auc score: 0.7086416931859981
+2021-05-16 17:31:59,216 - [line:151] - INFO: Epoch 23's Contrastive Loss: 0.22849534526467324
+2021-05-16 17:32:06,187 - [line:115] - INFO: Epoch 23's bbbp auc score: 0.8587150505651397
+2021-05-16 17:32:41,306 - [line:115] - INFO: Epoch 23's bace auc score: 0.6305496828752643
+2021-05-16 17:32:58,298 - [line:115] - INFO: Epoch 23's sider auc score: 0.5784780462214032
+2021-05-16 17:33:00,913 - [line:115] - INFO: Epoch 23's clintox auc score: 0.6111407697882694
+2021-05-16 17:33:49,653 - [line:115] - INFO: Epoch 23's tox21 auc score: 0.704370720383772
+2021-05-16 17:36:46,778 - [line:151] - INFO: Epoch 24's Contrastive Loss: 0.22692222982645036
+2021-05-16 17:36:54,694 - [line:115] - INFO: Epoch 24's bbbp auc score: 0.8616894705532421
+2021-05-16 17:37:25,319 - [line:115] - INFO: Epoch 24's bace auc score: 0.6425299506694856
+2021-05-16 17:37:36,758 - [line:115] - INFO: Epoch 24's sider auc score: 0.5638400486820667
+2021-05-16 17:37:39,843 - [line:115] - INFO: Epoch 24's clintox auc score: 0.5563056504633225
+2021-05-16 17:38:16,357 - [line:115] - INFO: Epoch 24's tox21 auc score: 0.7064474660801742
+2021-05-16 17:41:13,612 - [line:151] - INFO: Epoch 25's Contrastive Loss: 0.22549619883298874
+2021-05-16 17:41:20,426 - [line:115] - INFO: Epoch 25's bbbp auc score: 0.8511302795954789
+2021-05-16 17:41:50,070 - [line:115] - INFO: Epoch 25's bace auc score: 0.6363636363636362
+2021-05-16 17:42:12,524 - [line:115] - INFO: Epoch 25's sider auc score: 0.5765568519522891
+2021-05-16 17:42:15,560 - [line:115] - INFO: Epoch 25's clintox auc score: 0.5556617875446498
+2021-05-16 17:42:49,480 - [line:115] - INFO: Epoch 25's tox21 auc score: 0.702142764024256
+2021-05-16 17:45:47,469 - [line:151] - INFO: Epoch 26's Contrastive Loss: 0.22402120172977447
+2021-05-16 17:45:55,568 - [line:115] - INFO: Epoch 26's bbbp auc score: 0.8576740035693039
+2021-05-16 17:46:30,350 - [line:115] - INFO: Epoch 26's bace auc score: 0.6405919661733616
+2021-05-16 17:46:47,615 - [line:115] - INFO: Epoch 26's sider auc score: 0.583531297921243
+2021-05-16 17:46:50,915 - [line:115] - INFO: Epoch 26's clintox auc score: 0.5839658720298183
+2021-05-16 17:47:35,321 - [line:115] - INFO: Epoch 26's tox21 auc score: 0.7060971082097934
+2021-05-16 17:50:35,052 - [line:151] - INFO: Epoch 27's Contrastive Loss: 0.22281268626451492
+2021-05-16 17:50:41,257 - [line:115] - INFO: Epoch 27's bbbp auc score: 0.8536585365853658
+2021-05-16 17:51:12,015 - [line:115] - INFO: Epoch 27's bace auc score: 0.647463002114165
+2021-05-16 17:51:26,363 - [line:115] - INFO: Epoch 27's sider auc score: 0.5760920819838031
+2021-05-16 17:51:29,545 - [line:115] - INFO: Epoch 27's clintox auc score: 0.5304087720660559
+2021-05-16 17:52:16,611 - [line:115] - INFO: Epoch 27's tox21 auc score: 0.7055601251137252
+2021-05-16 17:55:15,783 - [line:151] - INFO: Epoch 28's Contrastive Loss: 0.22154854021966458
+2021-05-16 17:55:23,956 - [line:115] - INFO: Epoch 28's bbbp auc score: 0.8637715645449137
+2021-05-16 17:55:48,117 - [line:115] - INFO: Epoch 28's bace auc score: 0.6405919661733614
+2021-05-16 17:56:04,128 - [line:115] - INFO: Epoch 28's sider auc score: 0.5857509507275889
+2021-05-16 17:56:06,979 - [line:115] - INFO: Epoch 28's clintox auc score: 0.5676945824921054
+2021-05-16 17:56:57,097 - [line:115] - INFO: Epoch 28's tox21 auc score: 0.7110000829939277
+2021-05-16 17:59:56,677 - [line:151] - INFO: Epoch 29's Contrastive Loss: 0.22043400846421718
+2021-05-16 18:00:04,924 - [line:115] - INFO: Epoch 29's bbbp auc score: 0.8602022605591909
+2021-05-16 18:00:27,812 - [line:115] - INFO: Epoch 29's bace auc score: 0.649400986610289
+2021-05-16 18:00:40,967 - [line:115] - INFO: Epoch 29's sider auc score: 0.5615786720719311
+2021-05-16 18:00:43,661 - [line:115] - INFO: Epoch 29's clintox auc score: 0.5495434720712326
+2021-05-16 18:01:36,028 - [line:115] - INFO: Epoch 29's tox21 auc score: 0.7148198044025363
+2021-05-16 18:04:34,552 - [line:151] - INFO: Epoch 30's Contrastive Loss: 0.21918695412576197
+2021-05-16 18:04:44,248 - [line:115] - INFO: Epoch 30's bbbp auc score: 0.8668947055324211
+2021-05-16 18:05:09,724 - [line:115] - INFO: Epoch 30's bace auc score: 0.6516913319238902
+2021-05-16 18:05:22,371 - [line:115] - INFO: Epoch 30's sider auc score: 0.5787352596486973
+2021-05-16 18:05:25,407 - [line:115] - INFO: Epoch 30's clintox auc score: 0.5489254930889891
+2021-05-16 18:06:14,798 - [line:115] - INFO: Epoch 30's tox21 auc score: 0.708636718546218
+2021-05-16 18:09:12,901 - [line:151] - INFO: Epoch 31's Contrastive Loss: 0.21826486192643643
+2021-05-16 18:09:19,698 - [line:115] - INFO: Epoch 31's bbbp auc score: 0.858863771564545
+2021-05-16 18:09:21,992 - [line:115] - INFO: Epoch 31's bace auc score: 0.468816067653277
+2021-05-16 18:09:34,482 - [line:115] - INFO: Epoch 31's sider auc score: 0.5791016425717695
+2021-05-16 18:09:37,090 - [line:115] - INFO: Epoch 31's clintox auc score: 0.5639543536781073
+2021-05-16 18:10:24,561 - [line:115] - INFO: Epoch 31's tox21 auc score: 0.7062054752267337
+2021-05-16 18:13:23,442 - [line:151] - INFO: Epoch 32's Contrastive Loss: 0.2175720066577196
+2021-05-16 18:13:30,502 - [line:115] - INFO: Epoch 32's bbbp auc score: 0.862879238548483
+2021-05-16 18:13:32,920 - [line:115] - INFO: Epoch 32's bace auc score: 0.5021141649048626
+2021-05-16 18:13:45,396 - [line:115] - INFO: Epoch 32's sider auc score: 0.5812681824010542
+2021-05-16 18:13:48,420 - [line:115] - INFO: Epoch 32's clintox auc score: 0.570218266293938
+2021-05-16 18:14:41,227 - [line:115] - INFO: Epoch 32's tox21 auc score: 0.7102772185112322
+2021-05-16 18:17:39,842 - [line:151] - INFO: Epoch 33's Contrastive Loss: 0.2165007532387972
+2021-05-16 18:17:47,775 - [line:115] - INFO: Epoch 33's bbbp auc score: 0.8662998215348007
+2021-05-16 18:18:19,161 - [line:115] - INFO: Epoch 33's bace auc score: 0.6539816772374913
+2021-05-16 18:18:29,118 - [line:115] - INFO: Epoch 33's sider auc score: 0.5742105810139102
+2021-05-16 18:18:31,724 - [line:115] - INFO: Epoch 33's clintox auc score: 0.6245745327949475
+2021-05-16 18:19:14,202 - [line:115] - INFO: Epoch 33's tox21 auc score: 0.7085560460863768
+2021-05-16 18:22:12,386 - [line:151] - INFO: Epoch 34's Contrastive Loss: 0.21549209982156753
+2021-05-16 18:22:19,423 - [line:115] - INFO: Epoch 34's bbbp auc score: 0.862879238548483
+2021-05-16 18:22:42,594 - [line:115] - INFO: Epoch 34's bace auc score: 0.6411205073995773
+2021-05-16 18:22:55,109 - [line:115] - INFO: Epoch 34's sider auc score: 0.5828825241095225
+2021-05-16 18:22:58,132 - [line:115] - INFO: Epoch 34's clintox auc score: 0.557240707666822
+2021-05-16 18:23:47,251 - [line:115] - INFO: Epoch 34's tox21 auc score: 0.7120718726347781
+2021-05-16 18:26:45,828 - [line:151] - INFO: Epoch 35's Contrastive Loss: 0.21467095568776132
+2021-05-16 18:26:54,268 - [line:115] - INFO: Epoch 35's bbbp auc score: 0.8551457465794169
+2021-05-16 18:27:25,021 - [line:115] - INFO: Epoch 35's bace auc score: 0.655214940098661
+2021-05-16 18:27:35,928 - [line:115] - INFO: Epoch 35's sider auc score: 0.5592928371196955
+2021-05-16 18:27:38,991 - [line:115] - INFO: Epoch 35's clintox auc score: 0.5352490681782885
+2021-05-16 18:28:14,961 - [line:115] - INFO: Epoch 35's tox21 auc score: 0.7053646694947066
+2021-05-16 18:31:14,236 - [line:151] - INFO: Epoch 36's Contrastive Loss: 0.21403465621173381
+2021-05-16 18:31:20,943 - [line:115] - INFO: Epoch 36's bbbp auc score: 0.8624330755502677
+2021-05-16 18:31:48,320 - [line:115] - INFO: Epoch 36's bace auc score: 0.6538054968287526
+2021-05-16 18:31:58,071 - [line:115] - INFO: Epoch 36's sider auc score: 0.5700966285917649
+2021-05-16 18:32:01,135 - [line:115] - INFO: Epoch 36's clintox auc score: 0.5386819252471916
+2021-05-16 18:32:52,342 - [line:115] - INFO: Epoch 36's tox21 auc score: 0.7086119803517961
+2021-05-16 18:35:49,251 - [line:151] - INFO: Epoch 37's Contrastive Loss: 0.2133000711351633
+2021-05-16 18:35:56,013 - [line:115] - INFO: Epoch 37's bbbp auc score: 0.8652587745389648
+2021-05-16 18:36:22,252 - [line:115] - INFO: Epoch 37's bace auc score: 0.6650810429880196
+2021-05-16 18:36:36,251 - [line:115] - INFO: Epoch 37's sider auc score: 0.585421151244824
+2021-05-16 18:36:39,302 - [line:115] - INFO: Epoch 37's clintox auc score: 0.5460912020500077
+2021-05-16 18:37:28,078 - [line:115] - INFO: Epoch 37's tox21 auc score: 0.7143563038864945
+2021-05-16 18:40:27,197 - [line:151] - INFO: Epoch 38's Contrastive Loss: 0.21254503436386585
+2021-05-16 18:40:35,279 - [line:115] - INFO: Epoch 38's bbbp auc score: 0.8612433075550266
+2021-05-16 18:41:05,560 - [line:115] - INFO: Epoch 38's bace auc score: 0.6578576462297392
+2021-05-16 18:41:18,790 - [line:115] - INFO: Epoch 38's sider auc score: 0.5795905679179377
+2021-05-16 18:41:22,303 - [line:115] - INFO: Epoch 38's clintox auc score: 0.5446611145623026
+2021-05-16 18:42:10,662 - [line:115] - INFO: Epoch 38's tox21 auc score: 0.7076901975885089
+2021-05-16 18:45:15,387 - [line:151] - INFO: Epoch 39's Contrastive Loss: 0.21204239018261434
+2021-05-16 18:45:22,442 - [line:115] - INFO: Epoch 39's bbbp auc score: 0.8667459845330161
+2021-05-16 18:45:48,712 - [line:115] - INFO: Epoch 39's bace auc score: 0.6589147286821705
+2021-05-16 18:46:02,212 - [line:115] - INFO: Epoch 39's sider auc score: 0.5891718859508105
+2021-05-16 18:46:04,844 - [line:115] - INFO: Epoch 39's clintox auc score: 0.5441207873893462
+2021-05-16 18:46:54,232 - [line:115] - INFO: Epoch 39's tox21 auc score: 0.7112641239874308
+2021-05-16 18:49:53,480 - [line:151] - INFO: Epoch 40's Contrastive Loss: 0.2112583976238966
+2021-05-16 18:50:00,600 - [line:115] - INFO: Epoch 40's bbbp auc score: 0.857822724568709
+2021-05-16 18:50:24,723 - [line:115] - INFO: Epoch 40's bace auc score: 0.6545102184637068
+2021-05-16 18:50:39,635 - [line:115] - INFO: Epoch 40's sider auc score: 0.5797589896958518
+2021-05-16 18:50:42,686 - [line:115] - INFO: Epoch 40's clintox auc score: 0.5249860873841694
+2021-05-16 18:51:22,224 - [line:115] - INFO: Epoch 40's tox21 auc score: 0.7076038982014009
+2021-05-16 18:54:20,932 - [line:151] - INFO: Epoch 41's Contrastive Loss: 0.21063639745116233
+2021-05-16 18:54:28,856 - [line:115] - INFO: Epoch 41's bbbp auc score: 0.8579714455681142
+2021-05-16 18:54:54,804 - [line:115] - INFO: Epoch 41's bace auc score: 0.643939393939394
+2021-05-16 18:55:07,359 - [line:115] - INFO: Epoch 41's sider auc score: 0.5678883352685457
+2021-05-16 18:55:10,773 - [line:115] - INFO: Epoch 41's clintox auc score: 0.561919229176373
+2021-05-16 18:55:53,062 - [line:115] - INFO: Epoch 41's tox21 auc score: 0.7094856548429184
+2021-05-16 18:58:53,960 - [line:151] - INFO: Epoch 42's Contrastive Loss: 0.21014359526336193
+2021-05-16 18:59:03,630 - [line:115] - INFO: Epoch 42's bbbp auc score: 0.860350981558596
+2021-05-16 18:59:32,641 - [line:115] - INFO: Epoch 42's bace auc score: 0.6414728682170543
+2021-05-16 18:59:45,848 - [line:115] - INFO: Epoch 42's sider auc score: 0.5834073120827457
+2021-05-16 18:59:48,628 - [line:115] - INFO: Epoch 42's clintox auc score: 0.590773347310659
+2021-05-16 19:00:31,314 - [line:115] - INFO: Epoch 42's tox21 auc score: 0.7082980201276238
+2021-05-16 19:03:33,919 - [line:151] - INFO: Epoch 43's Contrastive Loss: 0.20961901664733887
+2021-05-16 19:03:42,481 - [line:115] - INFO: Epoch 43's bbbp auc score: 0.8642177275431291
+2021-05-16 19:04:07,589 - [line:115] - INFO: Epoch 43's bace auc score: 0.6455250176180409
+2021-05-16 19:04:23,611 - [line:115] - INFO: Epoch 43's sider auc score: 0.5716083138210586
+2021-05-16 19:04:26,717 - [line:115] - INFO: Epoch 43's clintox auc score: 0.5490290288347052
+2021-05-16 19:05:12,416 - [line:115] - INFO: Epoch 43's tox21 auc score: 0.7064649369507637
+2021-05-16 19:08:13,118 - [line:151] - INFO: Epoch 44's Contrastive Loss: 0.20894022047519684
+2021-05-16 19:08:19,235 - [line:115] - INFO: Epoch 44's bbbp auc score: 0.8579714455681141
+2021-05-16 19:08:21,660 - [line:115] - INFO: Epoch 44's bace auc score: 0.5158562367864694
+2021-05-16 19:08:36,927 - [line:115] - INFO: Epoch 44's sider auc score: 0.5795313016623029
+2021-05-16 19:08:40,007 - [line:115] - INFO: Epoch 44's clintox auc score: 0.550882965781436
+2021-05-16 19:09:22,923 - [line:115] - INFO: Epoch 44's tox21 auc score: 0.7128989768893442
+2021-05-16 19:12:22,216 - [line:151] - INFO: Epoch 45's Contrastive Loss: 0.20854238621890545
+2021-05-16 19:12:30,912 - [line:115] - INFO: Epoch 45's bbbp auc score: 0.8618381915526473
+2021-05-16 19:12:57,665 - [line:115] - INFO: Epoch 45's bace auc score: 0.6610288935870332
+2021-05-16 19:13:09,783 - [line:115] - INFO: Epoch 45's sider auc score: 0.5791115820252958
+2021-05-16 19:13:13,080 - [line:115] - INFO: Epoch 45's clintox auc score: 0.5484757596935342
+2021-05-16 19:13:57,949 - [line:115] - INFO: Epoch 45's tox21 auc score: 0.7071690490154655
+2021-05-16 19:17:01,642 - [line:151] - INFO: Epoch 46's Contrastive Loss: 0.20807311177253723
+2021-05-16 19:17:09,084 - [line:115] - INFO: Epoch 46's bbbp auc score: 0.8689767995240929
+2021-05-16 19:17:29,813 - [line:115] - INFO: Epoch 46's bace auc score: 0.6471106412966878
+2021-05-16 19:17:45,407 - [line:115] - INFO: Epoch 46's sider auc score: 0.5802756843518816
+2021-05-16 19:17:48,360 - [line:115] - INFO: Epoch 46's clintox auc score: 0.5723051586685304
+2021-05-16 19:18:31,186 - [line:115] - INFO: Epoch 46's tox21 auc score: 0.709561839988373
+2021-05-16 19:21:34,755 - [line:151] - INFO: Epoch 47's Contrastive Loss: 0.20745578862726688
+2021-05-16 19:21:42,090 - [line:115] - INFO: Epoch 47's bbbp auc score: 0.8607971445568114
+2021-05-16 19:22:07,141 - [line:115] - INFO: Epoch 47's bace auc score: 0.6555673009161381
+2021-05-16 19:22:21,530 - [line:115] - INFO: Epoch 47's sider auc score: 0.584522686559789
+2021-05-16 19:22:24,232 - [line:115] - INFO: Epoch 47's clintox auc score: 0.5936658772066056
+2021-05-16 19:23:09,772 - [line:115] - INFO: Epoch 47's tox21 auc score: 0.7092822161032473
+2021-05-16 19:26:13,155 - [line:151] - INFO: Epoch 48's Contrastive Loss: 0.20693720780313016
+2021-05-16 19:26:20,495 - [line:115] - INFO: Epoch 48's bbbp auc score: 0.8584176085663298
+2021-05-16 19:26:54,322 - [line:115] - INFO: Epoch 48's bace auc score: 0.6668428470754052
+2021-05-16 19:27:06,203 - [line:115] - INFO: Epoch 48's sider auc score: 0.5829240255229822
+2021-05-16 19:27:09,469 - [line:115] - INFO: Epoch 48's clintox auc score: 0.5367341590309054
+2021-05-16 19:27:57,868 - [line:115] - INFO: Epoch 48's tox21 auc score: 0.7084180176376887
+2021-05-16 19:31:01,290 - [line:151] - INFO: Epoch 49's Contrastive Loss: 0.20638034641742706
+2021-05-16 19:31:08,345 - [line:115] - INFO: Epoch 49's bbbp auc score: 0.8613920285544319
+2021-05-16 19:31:31,402 - [line:115] - INFO: Epoch 49's bace auc score: 0.6497533474277661
+2021-05-16 19:31:42,058 - [line:115] - INFO: Epoch 49's sider auc score: 0.5632476647475338
+2021-05-16 19:31:44,708 - [line:115] - INFO: Epoch 49's clintox auc score: 0.5880652404617693
+2021-05-16 19:32:31,453 - [line:115] - INFO: Epoch 49's tox21 auc score: 0.7119566424722948
+2021-05-16 19:35:33,775 - [line:151] - INFO: Epoch 50's Contrastive Loss: 0.20604793511331082
+2021-05-16 19:35:40,288 - [line:115] - INFO: Epoch 50's bbbp auc score: 0.8624330755502677
+2021-05-16 19:36:03,186 - [line:115] - INFO: Epoch 50's bace auc score: 0.6425299506694856
+2021-05-16 19:36:14,983 - [line:115] - INFO: Epoch 50's sider auc score: 0.5811446127049492
+2021-05-16 19:36:17,659 - [line:115] - INFO: Epoch 50's clintox auc score: 0.5922875575917587
+2021-05-16 19:37:10,064 - [line:115] - INFO: Epoch 50's tox21 auc score: 0.7092639720095458
+2021-05-16 19:40:13,799 - [line:151] - INFO: Epoch 51's Contrastive Loss: 0.20564456686377525
+2021-05-16 19:40:21,114 - [line:115] - INFO: Epoch 51's bbbp auc score: 0.8610945865556217
+2021-05-16 19:40:23,644 - [line:115] - INFO: Epoch 51's bace auc score: 0.49682875264270615
+2021-05-16 19:40:34,802 - [line:115] - INFO: Epoch 51's sider auc score: 0.5762978713146166
+2021-05-16 19:40:37,523 - [line:115] - INFO: Epoch 51's clintox auc score: 0.5327253843764559
+2021-05-16 19:41:31,132 - [line:115] - INFO: Epoch 51's tox21 auc score: 0.7099002806108636
+2021-05-16 19:44:34,771 - [line:151] - INFO: Epoch 52's Contrastive Loss: 0.20532498173415661
+2021-05-16 19:44:42,090 - [line:115] - INFO: Epoch 52's bbbp auc score: 0.85901249256395
+2021-05-16 19:45:02,634 - [line:115] - INFO: Epoch 52's bace auc score: 0.6437632135306555
+2021-05-16 19:45:15,781 - [line:115] - INFO: Epoch 52's sider auc score: 0.5795390838330216
+2021-05-16 19:45:18,945 - [line:115] - INFO: Epoch 52's clintox auc score: 0.5473821633794067
+2021-05-16 19:46:08,644 - [line:115] - INFO: Epoch 52's tox21 auc score: 0.710849300679668
+2021-05-16 19:46:58,163 - [line:16] - INFO: ####################################################################################################
+2021-05-16 19:47:02,153 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 19:47:06,013 - [line:150] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-16 19:47:09,367 - [line:150] - INFO: train data sider: 1141 | test data: 144 | val data: 142
+2021-05-16 19:47:12,518 - [line:150] - INFO: train data clintox: 1182 | test data: 149 | val data: 147
+2021-05-16 19:47:24,844 - [line:150] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-16 19:49:10,358 - [line:151] - INFO: Epoch 53's Contrastive Loss: 0.20485023595392704
+2021-05-16 19:49:18,864 - [line:115] - INFO: Epoch 53's bbbp auc score: 0.8591612135633551
+2021-05-16 19:49:46,102 - [line:115] - INFO: Epoch 53's bace auc score: 0.6582100070472163
+2021-05-16 19:49:58,961 - [line:115] - INFO: Epoch 53's sider auc score: 0.574846378165778
+2021-05-16 19:50:02,505 - [line:115] - INFO: Epoch 53's clintox auc score: 0.5264679427447327
+2021-05-16 19:50:44,369 - [line:16] - INFO: ####################################################################################################
+2021-05-16 19:50:45,341 - [line:115] - INFO: Epoch 53's tox21 auc score: 0.7127677742229516
+2021-05-16 19:50:48,479 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 19:50:52,442 - [line:150] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-16 19:50:55,998 - [line:150] - INFO: train data sider: 1141 | test data: 144 | val data: 142
+2021-05-16 19:50:59,079 - [line:150] - INFO: train data clintox: 1182 | test data: 149 | val data: 147
+2021-05-16 19:51:11,314 - [line:150] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-16 19:51:42,460 - [line:16] - INFO: ####################################################################################################
+2021-05-16 19:51:46,367 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 19:51:50,171 - [line:150] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-16 19:51:53,536 - [line:150] - INFO: train data sider: 1141 | test data: 144 | val data: 142
+2021-05-16 19:51:56,579 - [line:150] - INFO: train data clintox: 1182 | test data: 149 | val data: 147
+2021-05-16 19:52:08,920 - [line:150] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-16 19:52:51,828 - [line:16] - INFO: ####################################################################################################
+2021-05-16 19:52:55,853 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 19:52:59,734 - [line:150] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-16 19:53:03,218 - [line:150] - INFO: train data sider: 1141 | test data: 144 | val data: 142
+2021-05-16 19:53:06,242 - [line:150] - INFO: train data clintox: 1182 | test data: 149 | val data: 147
+2021-05-16 19:53:18,524 - [line:150] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-16 19:53:49,331 - [line:151] - INFO: Epoch 54's Contrastive Loss: 0.2043886136263609
+2021-05-16 19:53:57,390 - [line:115] - INFO: Epoch 54's bbbp auc score: 0.858863771564545
+2021-05-16 19:54:24,326 - [line:115] - INFO: Epoch 54's bace auc score: 0.654862579281184
+2021-05-16 19:54:31,036 - [line:16] - INFO: ####################################################################################################
+2021-05-16 19:54:35,099 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 19:54:39,102 - [line:150] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-16 19:54:40,860 - [line:115] - INFO: Epoch 54's sider auc score: 0.5800766546678277
+2021-05-16 19:54:42,622 - [line:150] - INFO: train data sider: 1141 | test data: 144 | val data: 142
+2021-05-16 19:54:44,139 - [line:115] - INFO: Epoch 54's clintox auc score: 0.5658115261168919
+2021-05-16 19:54:45,732 - [line:150] - INFO: train data clintox: 1182 | test data: 149 | val data: 147
+2021-05-16 19:54:57,970 - [line:150] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-16 19:55:30,170 - [line:16] - INFO: ####################################################################################################
+2021-05-16 19:55:34,224 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 19:55:36,735 - [line:115] - INFO: Epoch 54's tox21 auc score: 0.7116627356834594
+2021-05-16 19:55:38,056 - [line:150] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-16 19:55:41,476 - [line:150] - INFO: train data sider: 1141 | test data: 144 | val data: 142
+2021-05-16 19:55:44,556 - [line:150] - INFO: train data clintox: 1182 | test data: 149 | val data: 147
+2021-05-16 19:55:57,066 - [line:150] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-16 19:56:40,613 - [line:16] - INFO: ####################################################################################################
+2021-05-16 19:56:44,766 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 19:56:48,821 - [line:150] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-16 19:56:52,363 - [line:150] - INFO: train data sider: 1141 | test data: 144 | val data: 142
+2021-05-16 19:56:55,500 - [line:150] - INFO: train data clintox: 1182 | test data: 149 | val data: 147
+2021-05-16 19:57:07,800 - [line:150] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-16 19:57:58,740 - [line:16] - INFO: ####################################################################################################
+2021-05-16 19:58:02,735 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 19:58:06,588 - [line:150] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-16 19:58:09,962 - [line:150] - INFO: train data sider: 1141 | test data: 144 | val data: 142
+2021-05-16 19:58:12,980 - [line:150] - INFO: train data clintox: 1182 | test data: 149 | val data: 147
+2021-05-16 19:58:25,422 - [line:150] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-16 19:58:41,579 - [line:151] - INFO: Epoch 55's Contrastive Loss: 0.20397513367235662
+2021-05-16 19:58:49,326 - [line:115] - INFO: Epoch 55's bbbp auc score: 0.8630279595478882
+2021-05-16 19:59:13,445 - [line:115] - INFO: Epoch 55's bace auc score: 0.6504580690627202
+2021-05-16 19:59:17,662 - [line:16] - INFO: ####################################################################################################
+2021-05-16 19:59:21,703 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 19:59:25,697 - [line:150] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-16 19:59:29,253 - [line:150] - INFO: train data sider: 1141 | test data: 144 | val data: 142
+2021-05-16 19:59:29,860 - [line:115] - INFO: Epoch 55's sider auc score: 0.5798907110590248
+2021-05-16 19:59:32,404 - [line:150] - INFO: train data clintox: 1182 | test data: 149 | val data: 147
+2021-05-16 19:59:32,542 - [line:115] - INFO: Epoch 55's clintox auc score: 0.5541508127556038
+2021-05-16 19:59:44,701 - [line:150] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-16 20:00:11,136 - [line:115] - INFO: Epoch 55's tox21 auc score: 0.7074408405631872
+2021-05-16 20:00:28,033 - [line:16] - INFO: ####################################################################################################
+2021-05-16 20:00:31,996 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:00:35,934 - [line:150] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-16 20:00:39,625 - [line:150] - INFO: train data sider: 1141 | test data: 144 | val data: 142
+2021-05-16 20:00:42,685 - [line:150] - INFO: train data clintox: 1182 | test data: 149 | val data: 147
+2021-05-16 20:00:54,950 - [line:150] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-16 20:02:03,738 - [line:16] - INFO: ####################################################################################################
+2021-05-16 20:02:07,636 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:02:11,546 - [line:150] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-16 20:02:14,948 - [line:150] - INFO: train data sider: 1141 | test data: 144 | val data: 142
+2021-05-16 20:02:17,966 - [line:150] - INFO: train data clintox: 1182 | test data: 149 | val data: 147
+2021-05-16 20:02:30,427 - [line:150] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-16 20:03:15,785 - [line:151] - INFO: Epoch 56's Contrastive Loss: 0.20379748828709127
+2021-05-16 20:03:24,248 - [line:115] - INFO: Epoch 56's bbbp auc score: 0.8599048185603807
+2021-05-16 20:03:49,016 - [line:115] - INFO: Epoch 56's bace auc score: 0.6573291050035236
+2021-05-16 20:04:00,801 - [line:115] - INFO: Epoch 56's sider auc score: 0.5817378313111544
+2021-05-16 20:04:03,897 - [line:115] - INFO: Epoch 56's clintox auc score: 0.532146231298856
+2021-05-16 20:04:20,046 - [line:16] - INFO: ####################################################################################################
+2021-05-16 20:04:24,293 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:04:28,151 - [line:150] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-16 20:04:31,529 - [line:150] - INFO: train data sider: 1141 | test data: 144 | val data: 142
+2021-05-16 20:04:34,518 - [line:150] - INFO: train data clintox: 1182 | test data: 149 | val data: 147
+2021-05-16 20:04:47,029 - [line:150] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-16 20:04:49,216 - [line:115] - INFO: Epoch 56's tox21 auc score: 0.7125791876560102
+2021-05-16 20:05:11,913 - [line:16] - INFO: ####################################################################################################
+2021-05-16 20:05:15,921 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:05:19,784 - [line:150] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-16 20:05:23,165 - [line:150] - INFO: train data sider: 1141 | test data: 144 | val data: 142
+2021-05-16 20:05:26,232 - [line:150] - INFO: train data clintox: 1182 | test data: 149 | val data: 147
+2021-05-16 20:05:38,618 - [line:150] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-16 20:06:44,505 - [line:16] - INFO: ####################################################################################################
+2021-05-16 20:06:48,632 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:06:52,498 - [line:150] - INFO: train data bace: 1210 | test data: 152 | val data: 151
+2021-05-16 20:06:56,118 - [line:150] - INFO: train data sider: 1141 | test data: 144 | val data: 142
+2021-05-16 20:06:59,216 - [line:150] - INFO: train data clintox: 1182 | test data: 149 | val data: 147
+2021-05-16 20:07:11,323 - [line:150] - INFO: train data tox21: 6264 | test data: 784 | val data: 783
+2021-05-16 20:07:48,963 - [line:16] - INFO: ####################################################################################################
+2021-05-16 20:07:52,870 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:07:55,775 - [line:151] - INFO: Epoch 57's Contrastive Loss: 0.20339379265904425
+2021-05-16 20:08:06,986 - [line:115] - INFO: Epoch 57's bbbp auc score: 0.862879238548483
+2021-05-16 20:08:38,753 - [line:115] - INFO: Epoch 57's bace auc score: 0.6575052854122622
+2021-05-16 20:08:40,858 - [line:16] - INFO: ####################################################################################################
+2021-05-16 20:08:45,086 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:08:56,251 - [line:115] - INFO: Epoch 57's sider auc score: 0.5823364971953396
+2021-05-16 20:09:00,407 - [line:115] - INFO: Epoch 57's clintox auc score: 0.5478933711238805
+2021-05-16 20:09:27,191 - [line:16] - INFO: ####################################################################################################
+2021-05-16 20:09:31,215 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:09:38,394 - [line:115] - INFO: Epoch 57's tox21 auc score: 0.7085728825754143
+2021-05-16 20:09:48,372 - [line:16] - INFO: ####################################################################################################
+2021-05-16 20:09:52,419 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:12:45,496 - [line:151] - INFO: Epoch 58's Contrastive Loss: 0.2028977544605732
+2021-05-16 20:12:52,025 - [line:115] - INFO: Epoch 58's bbbp auc score: 0.8596073765615706
+2021-05-16 20:13:20,191 - [line:115] - INFO: Epoch 58's bace auc score: 0.6627906976744187
+2021-05-16 20:13:32,322 - [line:115] - INFO: Epoch 58's sider auc score: 0.5752871279832117
+2021-05-16 20:13:35,472 - [line:115] - INFO: Epoch 58's clintox auc score: 0.5262899906817828
+2021-05-16 20:14:16,880 - [line:115] - INFO: Epoch 58's tox21 auc score: 0.7051510689457944
+2021-05-16 20:17:19,730 - [line:151] - INFO: Epoch 59's Contrastive Loss: 0.20270717777311803
+2021-05-16 20:17:29,022 - [line:115] - INFO: Epoch 59's bbbp auc score: 0.8643664485425343
+2021-05-16 20:18:09,772 - [line:115] - INFO: Epoch 59's bace auc score: 0.6509866102889359
+2021-05-16 20:18:29,598 - [line:115] - INFO: Epoch 59's sider auc score: 0.5719943538850747
+2021-05-16 20:18:32,272 - [line:115] - INFO: Epoch 59's clintox auc score: 0.5155999249365844
+2021-05-16 20:19:14,513 - [line:115] - INFO: Epoch 59's tox21 auc score: 0.7133917421063817
+2021-05-16 20:21:25,736 - [line:15] - INFO: ####################################################################################################
+2021-05-16 20:21:29,730 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:21:40,737 - [line:15] - INFO: ####################################################################################################
+2021-05-16 20:21:44,629 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:22:04,012 - [line:15] - INFO: ####################################################################################################
+2021-05-16 20:22:08,287 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:22:18,706 - [line:151] - INFO: Epoch 60's Contrastive Loss: 0.20226616151630877
+2021-05-16 20:22:26,966 - [line:115] - INFO: Epoch 60's bbbp auc score: 0.8603509815585961
+2021-05-16 20:22:44,481 - [line:15] - INFO: ####################################################################################################
+2021-05-16 20:22:48,463 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:22:59,499 - [line:115] - INFO: Epoch 60's bace auc score: 0.6721282593375616
+2021-05-16 20:23:08,701 - [line:15] - INFO: ####################################################################################################
+2021-05-16 20:23:11,962 - [line:115] - INFO: Epoch 60's sider auc score: 0.5780500514763789
+2021-05-16 20:23:13,066 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:23:14,934 - [line:115] - INFO: Epoch 60's clintox auc score: 0.5676784050318373
+2021-05-16 20:23:38,384 - [line:15] - INFO: ####################################################################################################
+2021-05-16 20:23:42,387 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:23:59,268 - [line:115] - INFO: Epoch 60's tox21 auc score: 0.7093318616478651
+2021-05-16 20:24:25,676 - [line:15] - INFO: ####################################################################################################
+2021-05-16 20:24:29,564 - [line:150] - INFO: train data bbbp: 1631 | test data: 205 | val data: 203
+2021-05-16 20:27:13,958 - [line:151] - INFO: Epoch 61's Contrastive Loss: 0.20196582570672036
+2021-05-16 20:27:22,962 - [line:115] - INFO: Epoch 61's bbbp auc score: 0.867935752528257
+2021-05-16 20:27:44,089 - [line:115] - INFO: Epoch 61's bace auc score: 0.6557434813248767
+2021-05-16 20:27:55,391 - [line:115] - INFO: Epoch 61's sider auc score: 0.5812389509779113
+2021-05-16 20:27:58,570 - [line:115] - INFO: Epoch 61's clintox auc score: 0.5178647693741264
+2021-05-16 20:28:38,847 - [line:115] - INFO: Epoch 61's tox21 auc score: 0.7132209149653977
+2021-05-16 20:31:45,732 - [line:151] - INFO: Epoch 62's Contrastive Loss: 0.20201831378042698
+2021-05-16 20:31:58,841 - [line:115] - INFO: Epoch 62's bbbp auc score: 0.8627305175490779
+2021-05-16 20:32:23,854 - [line:16] - INFO: ####################################################################################################
+2021-05-16 20:32:26,071 - [line:115] - INFO: Epoch 62's bace auc score: 0.6508104298801973
+2021-05-16 20:32:39,850 - [line:115] - INFO: Epoch 62's sider auc score: 0.5726062848748318
+2021-05-16 20:32:42,666 - [line:115] - INFO: Epoch 62's clintox auc score: 0.6241862737485118
+2021-05-16 20:33:38,934 - [line:115] - INFO: Epoch 62's tox21 auc score: 0.7143361354777457
+2021-05-16 20:36:50,822 - [line:151] - INFO: Epoch 63's Contrastive Loss: 0.20135404765605927
+2021-05-16 20:37:01,227 - [line:115] - INFO: Epoch 63's bbbp auc score: 0.8685306365258775
+2021-05-16 20:37:34,535 - [line:115] - INFO: Epoch 63's bace auc score: 0.6585623678646936
+2021-05-16 20:37:44,962 - [line:115] - INFO: Epoch 63's sider auc score: 0.5682535627252192
+2021-05-16 20:37:47,600 - [line:115] - INFO: Epoch 63's clintox auc score: 0.5249149065589895
+2021-05-16 20:38:35,301 - [line:115] - INFO: Epoch 63's tox21 auc score: 0.7091158151622251
+2021-05-16 20:41:34,844 - [line:151] - INFO: Epoch 64's Contrastive Loss: 0.200914616137743
+2021-05-16 20:41:42,876 - [line:115] - INFO: Epoch 64's bbbp auc score: 0.8610945865556217
+2021-05-16 20:42:16,680 - [line:115] - INFO: Epoch 64's bace auc score: 0.6538054968287526
+2021-05-16 20:42:31,381 - [line:115] - INFO: Epoch 64's sider auc score: 0.5803226793393702
+2021-05-16 20:42:34,415 - [line:115] - INFO: Epoch 64's clintox auc score: 0.5801479914065331
+2021-05-16 20:43:19,654 - [line:115] - INFO: Epoch 64's tox21 auc score: 0.7120907727898317
+2021-05-16 20:46:19,274 - [line:151] - INFO: Epoch 65's Contrastive Loss: 0.20080940216779708
+2021-05-16 20:46:27,699 - [line:115] - INFO: Epoch 65's bbbp auc score: 0.85901249256395
+2021-05-16 20:46:51,153 - [line:115] - INFO: Epoch 65's bace auc score: 0.6562720225510923
+2021-05-16 20:47:00,510 - [line:115] - INFO: Epoch 65's sider auc score: 0.5592586742628471
+2021-05-16 20:47:03,218 - [line:115] - INFO: Epoch 65's clintox auc score: 0.6166572837397111
+2021-05-16 20:47:50,972 - [line:115] - INFO: Epoch 65's tox21 auc score: 0.709171690698524
+2021-05-16 20:51:07,906 - [line:151] - INFO: Epoch 66's Contrastive Loss: 0.2002384579181671
+2021-05-16 20:51:18,341 - [line:115] - INFO: Epoch 66's bbbp auc score: 0.8564842355740631
+2021-05-16 20:51:52,441 - [line:115] - INFO: Epoch 66's bace auc score: 0.6557434813248766
+2021-05-16 20:52:04,025 - [line:115] - INFO: Epoch 66's sider auc score: 0.5809834049763045
+2021-05-16 20:52:06,606 - [line:115] - INFO: Epoch 66's clintox auc score: 0.5627895765388
+2021-05-16 20:52:51,504 - [line:115] - INFO: Epoch 66's tox21 auc score: 0.711046241436998
+2021-05-16 20:55:50,425 - [line:151] - INFO: Epoch 67's Contrastive Loss: 0.20022123150527477
+2021-05-16 20:55:58,939 - [line:115] - INFO: Epoch 67's bbbp auc score: 0.8581201665675193
+2021-05-16 20:56:22,037 - [line:115] - INFO: Epoch 67's bace auc score: 0.6539816772374912
+2021-05-16 20:56:42,535 - [line:115] - INFO: Epoch 67's sider auc score: 0.5698121592093723
+2021-05-16 20:56:45,170 - [line:115] - INFO: Epoch 67's clintox auc score: 0.5400602448620386
+2021-05-16 20:57:25,238 - [line:115] - INFO: Epoch 67's tox21 auc score: 0.7104963165287277
+2021-05-16 21:00:23,988 - [line:151] - INFO: Epoch 68's Contrastive Loss: 0.19981714121997357
+2021-05-16 21:00:31,255 - [line:115] - INFO: Epoch 68's bbbp auc score: 0.8636228435455087
+2021-05-16 21:00:58,388 - [line:115] - INFO: Epoch 68's bace auc score: 0.6499295278365046
+2021-05-16 21:01:09,808 - [line:115] - INFO: Epoch 68's sider auc score: 0.5818528750473655
+2021-05-16 21:01:12,505 - [line:115] - INFO: Epoch 68's clintox auc score: 0.5727193016513952
+2021-05-16 21:01:56,698 - [line:115] - INFO: Epoch 68's tox21 auc score: 0.7083848564088328
+2021-05-16 21:04:56,676 - [line:151] - INFO: Epoch 69's Contrastive Loss: 0.19957975678145887
+2021-05-16 21:05:04,376 - [line:115] - INFO: Epoch 69's bbbp auc score: 0.8670434265318262
+2021-05-16 21:05:24,640 - [line:115] - INFO: Epoch 69's bace auc score: 0.6656095842142353
+2021-05-16 21:05:39,489 - [line:115] - INFO: Epoch 69's sider auc score: 0.5776867742693143
+2021-05-16 21:05:42,133 - [line:115] - INFO: Epoch 69's clintox auc score: 0.5243292824972822
+2021-05-16 21:06:19,379 - [line:115] - INFO: Epoch 69's tox21 auc score: 0.7140693532932966
+2021-05-16 21:09:17,384 - [line:151] - INFO: Epoch 70's Contrastive Loss: 0.19932947136461734
+2021-05-16 21:09:24,125 - [line:115] - INFO: Epoch 70's bbbp auc score: 0.8631766805472932
+2021-05-16 21:09:44,097 - [line:115] - INFO: Epoch 70's bace auc score: 0.6545102184637068
+2021-05-16 21:09:56,992 - [line:115] - INFO: Epoch 70's sider auc score: 0.5758328088643825
+2021-05-16 21:09:59,719 - [line:115] - INFO: Epoch 70's clintox auc score: 0.5662127271315422
+2021-05-16 21:10:39,864 - [line:115] - INFO: Epoch 70's tox21 auc score: 0.7111183263643044
+2021-05-16 21:13:38,952 - [line:151] - INFO: Epoch 71's Contrastive Loss: 0.19941425904631616
+2021-05-16 21:13:46,468 - [line:115] - INFO: Epoch 71's bbbp auc score: 0.8627305175490779
+2021-05-16 21:14:08,592 - [line:115] - INFO: Epoch 71's bace auc score: 0.6471106412966878
+2021-05-16 21:14:22,617 - [line:115] - INFO: Epoch 71's sider auc score: 0.5794796359350873
+2021-05-16 21:14:25,230 - [line:115] - INFO: Epoch 71's clintox auc score: 0.5557200264016151
+2021-05-16 21:15:11,149 - [line:115] - INFO: Epoch 71's tox21 auc score: 0.7068038774105737
+2021-05-16 21:18:10,517 - [line:151] - INFO: Epoch 72's Contrastive Loss: 0.19903382800519467
+2021-05-16 21:18:16,927 - [line:115] - INFO: Epoch 72's bbbp auc score: 0.8569303985722783
+2021-05-16 21:18:46,686 - [line:115] - INFO: Epoch 72's bace auc score: 0.6650810429880197
+2021-05-16 21:18:56,678 - [line:115] - INFO: Epoch 72's sider auc score: 0.5705502499760114
+2021-05-16 21:18:59,389 - [line:115] - INFO: Epoch 72's clintox auc score: 0.5419174173008231
+2021-05-16 21:19:39,455 - [line:115] - INFO: Epoch 72's tox21 auc score: 0.7101941256352785
+2021-05-16 21:22:38,374 - [line:151] - INFO: Epoch 73's Contrastive Loss: 0.198843190446496
+2021-05-16 21:22:46,691 - [line:115] - INFO: Epoch 73's bbbp auc score: 0.8707614515169542
+2021-05-16 21:23:20,243 - [line:115] - INFO: Epoch 73's bace auc score: 0.6636715997181113
+2021-05-16 21:23:31,599 - [line:115] - INFO: Epoch 73's sider auc score: 0.5472510196880515
+2021-05-16 21:23:34,278 - [line:115] - INFO: Epoch 73's clintox auc score: 0.5535134208210384
+2021-05-16 21:24:22,003 - [line:115] - INFO: Epoch 73's tox21 auc score: 0.7137540254884637
+2021-05-16 21:27:21,554 - [line:151] - INFO: Epoch 74's Contrastive Loss: 0.19842536091804505
+2021-05-16 21:27:29,919 - [line:115] - INFO: Epoch 74's bbbp auc score: 0.8607971445568113
+2021-05-16 21:27:55,420 - [line:115] - INFO: Epoch 74's bace auc score: 0.6356589147286822
+2021-05-16 21:28:07,216 - [line:115] - INFO: Epoch 74's sider auc score: 0.5827857037269066
+2021-05-16 21:28:09,857 - [line:115] - INFO: Epoch 74's clintox auc score: 0.5651838406584873
+2021-05-16 21:28:56,612 - [line:115] - INFO: Epoch 74's tox21 auc score: 0.7099953351741709
+2021-05-16 21:31:54,703 - [line:151] - INFO: Epoch 75's Contrastive Loss: 0.19851347081363202
+2021-05-16 21:32:01,683 - [line:115] - INFO: Epoch 75's bbbp auc score: 0.8701665675193337
+2021-05-16 21:32:28,284 - [line:115] - INFO: Epoch 75's bace auc score: 0.6592670894996477
+2021-05-16 21:32:42,074 - [line:115] - INFO: Epoch 75's sider auc score: 0.5762758624514733
+2021-05-16 21:32:44,688 - [line:115] - INFO: Epoch 75's clintox auc score: 0.5145063286224569
+2021-05-16 21:33:30,717 - [line:115] - INFO: Epoch 75's tox21 auc score: 0.7121011970978204
+2021-05-16 21:36:28,023 - [line:151] - INFO: Epoch 76's Contrastive Loss: 0.19814254403114318
+2021-05-16 21:36:34,997 - [line:115] - INFO: Epoch 76's bbbp auc score: 0.866597263533611
+2021-05-16 21:36:55,631 - [line:115] - INFO: Epoch 76's bace auc score: 0.6504580690627202
+2021-05-16 21:37:07,977 - [line:115] - INFO: Epoch 76's sider auc score: 0.5850209041477987
+2021-05-16 21:37:10,567 - [line:115] - INFO: Epoch 76's clintox auc score: 0.5909157089610189
+2021-05-16 21:37:55,472 - [line:115] - INFO: Epoch 76's tox21 auc score: 0.7155131591783223
+2021-05-16 21:40:54,439 - [line:151] - INFO: Epoch 77's Contrastive Loss: 0.19802644744515419
+2021-05-16 21:41:01,262 - [line:115] - INFO: Epoch 77's bbbp auc score: 0.8627305175490778
+2021-05-16 21:41:26,925 - [line:115] - INFO: Epoch 77's bace auc score: 0.6608527131782946
+2021-05-16 21:41:38,019 - [line:115] - INFO: Epoch 77's sider auc score: 0.5756806130088518
+2021-05-16 21:41:41,067 - [line:115] - INFO: Epoch 77's clintox auc score: 0.5455346974167832
+2021-05-16 21:42:21,061 - [line:115] - INFO: Epoch 77's tox21 auc score: 0.7113787961727188
+2021-05-16 21:45:20,025 - [line:151] - INFO: Epoch 78's Contrastive Loss: 0.1975085824728012
+2021-05-16 21:45:28,031 - [line:115] - INFO: Epoch 78's bbbp auc score: 0.8555919095776324
+2021-05-16 21:45:46,398 - [line:115] - INFO: Epoch 78's bace auc score: 0.6368921775898521
+2021-05-16 21:45:57,533 - [line:115] - INFO: Epoch 78's sider auc score: 0.5745796836883899
+2021-05-16 21:46:00,059 - [line:115] - INFO: Epoch 78's clintox auc score: 0.6069766915152456
+2021-05-16 21:46:36,837 - [line:115] - INFO: Epoch 78's tox21 auc score: 0.7101595838451827
+2021-05-16 21:49:34,481 - [line:151] - INFO: Epoch 79's Contrastive Loss: 0.1975010234862566
+2021-05-16 21:49:42,530 - [line:115] - INFO: Epoch 79's bbbp auc score: 0.8604997025580012
+2021-05-16 21:50:01,967 - [line:115] - INFO: Epoch 79's bace auc score: 0.65169133192389
+2021-05-16 21:50:13,250 - [line:115] - INFO: Epoch 79's sider auc score: 0.5697534634987207
+2021-05-16 21:50:15,872 - [line:115] - INFO: Epoch 79's clintox auc score: 0.5934814541595486
+2021-05-16 21:50:55,095 - [line:115] - INFO: Epoch 79's tox21 auc score: 0.7131879720063233

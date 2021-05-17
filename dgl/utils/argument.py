@@ -4,9 +4,9 @@ from typing import Tuple, List
 import torch
 def parse_argument() -> Namespace:
     parser = ArgumentParser()
-    parser.add_argument('--seed', type=int, default=0)
+    parser.add_argument('--seed', type=int, default=1)
     # parser.add_argument('--data_name', type=str, default='toxcast')
-    parser.add_argument('--data_name', type=Tuple, default=('bbbp', 'bace', 'sider', 'clintox', 'tox21', 'toxcast'))
+    parser.add_argument('--data_name', type=Tuple, default=('bbbp',))# 'bace', 'sider', 'clintox', 'tox21',))# 'toxcast'))
     parser.add_argument('--data_dir', type=str, default='../../data')
     parser.add_argument('--feature_scaling', type=bool, default=True)
     parser.add_argument('--split_type', type=str, default='random')
@@ -17,7 +17,7 @@ def parse_argument() -> Namespace:
     parser.add_argument('--bias', type=bool, default=False)
     parser.add_argument('--depth', type=int, default=5)
     parser.add_argument('--dropout', type=float, default=0.0)
-    parser.add_argument('--activation', type=str, default='ReLU')
+    parser.add_argument('--activation', type=str, default='relu')
 
     parser.add_argument('--pn_generator', type=str, default='Dropout')
     parser.add_argument('--contrastive_loss', type=str, default='NCESoftmax')
@@ -30,11 +30,12 @@ def parse_argument() -> Namespace:
     parser.add_argument('--final_lr', type=float, default=1e-4)
     parser.add_argument('--init_lr', type=float, default=1e-4)
 
-    parser.add_argument('--cl_data_name', type=str, default='zinc15_10M_2D')
+    parser.add_argument('--cl_data_name', type=str, default='zinc15_250K_2D')
     parser.add_argument('--cl_max_lr', type=float, default=1e-5)
     parser.add_argument('--cl_final_lr', type=float, default=1e-5)
     parser.add_argument('--cl_init_lr', type=float, default=1e-5)
     parser.add_argument('--cl_batch_size', type=int, default=1250)
+    parser.add_argument('--temperature', type=float, default=0.1)
     parser.add_argument('--metric', type=str, default='auc')
 
     args = parser.parse_args()

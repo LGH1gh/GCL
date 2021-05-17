@@ -1,25 +1,39 @@
+from dgl.utils import data
 from utils import parse_argument, set_seed, build_lr_scheduler, build_optimizer, get_metric_func, get_loss_func
 from data import load_dataloader, load_cl_dataloader
-from model import Encoder, FFN4Test, ContrastiveLoss
+from model import SetTransformer, CMPNN, FFN4Test, ContrastiveLoss
+from typing import List
 import numpy as np
 from tqdm import tqdm
 import lmdb
 import pickle
 import torch
 import logging
+import dgl
 import time
+import warnings
+warnings.filterwarnings('ignore')
 logger = logging.getLogger()
 
-def train_encoder(epoch_idx, encoder, criterion, encoder_optimizer, encoder_scheduler, dataloader):
+def train_encoder(epoch_idx, encoder, criterion, encoder_optimizer, encoder_scheduler, data_info, dataloader, args):
     encoder.train()
     losses = []
-    with tqdm(enumerate(dataloader), desc=f'Epoch {epoch_idx}', total=len(dataloader), ncols=100) as batch:
+    with tqdm(enumerate(dataloader), desc=f'Epoch {epoch_idx}', total=data_info['train_steps_per_epoch'], ncols=100) as batch:
         for idx, x in batch:
             encoder_optimizer.zero_grad()
-            y_hat = encoder(x)
+            graphs = []
+            with args.env.begin() as txn:
+                for idx in x:
+                    graphs.append(pickle.loads(txn.get(str(idx.item()).encode(), db=args.graphs_db))) 
+            graph_batch = dgl.batch(graphs).to(args.device)
+
+            nodes_feature = graph_batch.ndata['attr']
+            edges_feature = graph_batch.edata['attr']
+            y_hat = encoder(graph_batch, nodes_feature, edges_feature)
+
             loss = criterion(y_hat)
             loss.backward()
-            # torch.nn.utils.clip_grad_norm_(encoder_model.parameters(), 0.1)
+            torch.nn.utils.clip_grad_norm_(encoder.parameters(), 0.1)
             batch.set_postfix(loss=loss.item())
             encoder_optimizer.step()
             encoder_scheduler.step()
@@ -31,10 +45,11 @@ def train_classifer(encoder, classifier, dataloader, classifier_optimizer, class
     classifier.train()
     for idx, (x, y) in enumerate(dataloader):
         mask = torch.Tensor([[not val.isnan() for val in col] for col in y]).to(args.device)
+        x = x.to(args.device)
         y = torch.Tensor([[0 if val.isnan() else val for val in col] for col in y]).to(args.device)
         classifier_optimizer.zero_grad()
         with torch.no_grad():
-            x_hat = encoder(x)
+            x_hat = encoder(x, x.ndata['attr'], x.edata['attr'])
         y_hat = classifier(x_hat)
         loss = criterion(y_hat, y)
         loss = torch.where(torch.isnan(loss), torch.full_like(loss, 0), loss)
@@ -44,13 +59,15 @@ def train_classifer(encoder, classifier, dataloader, classifier_optimizer, class
         classifier_optimizer.step()
         classifier_schedule.step()
 
-def evaluate_concat(encoder, classifier, data_info, dataloader, metric_func):
+
+def evaluate_concat(encoder, classifier, data_info, dataloader, metric_func, args):
     encoder.eval()
     classifier.eval()
     with torch.no_grad():
         target, pred = [], []
         for idx, (x, y) in enumerate(dataloader):
-            y_hat = classifier(encoder(x)).reshape(y.size())
+            x = x.to(args.device)
+            y_hat = classifier(encoder(x, x.ndata['attr'], x.edata['attr'])).reshape(y.size())
             pred.append(y_hat.cpu())
             target.append(y)
         pred = torch.cat(pred)
@@ -69,7 +86,7 @@ def evaluate_concat(encoder, classifier, data_info, dataloader, metric_func):
                 mark = False
                 if all(target == 0 for target in valid_targets[i]) or all(target == 1 for target in valid_targets[i]):
                     mark = True
-                    logger.debug('Warning: Found a task with targets all 0s or all 1s')
+                    logger.debug(f'Warning: Found a task {data_info["data_name"]} with targets all 0s or all 1s')
                 if all(pred == 0 for pred in valid_preds[i]) or all(pred == 1 for pred in valid_preds[i]):
                     mark = True
                     logger.debug('Warning: Found a task with predictions all 0s or all 1s')
@@ -85,10 +102,10 @@ def evaluate_encoder(epoch_idx, encoder, data_info, train_dataloader, val_datalo
     classifier = FFN4Test(args, data_info).to(args.device)
     classifier_loss = get_loss_func(data_info).to(args.device)
     classifier_optimizer = build_optimizer(classifier, args.init_lr)
-    classifier_scheduler = build_lr_scheduler(classifier_optimizer, data_info['train_steps_per_epoch'], args.init_lr, args.max_lr, args.final_lr, args)
+    classifier_scheduler = build_lr_scheduler(classifier_optimizer, data_info, args.init_lr, args.max_lr, args.final_lr, args)
     while True:
         train_classifer(encoder, classifier, train_dataloader, classifier_optimizer, classifier_scheduler, classifier_loss, args)
-        result = evaluate_concat(encoder, classifier, data_info, val_dataloader, metric_func)
+        result = evaluate_concat(encoder, classifier, data_info, val_dataloader, metric_func, args)
         if best_result < result:
             best_result = result
             current_patience = 0
@@ -100,7 +117,7 @@ def evaluate_encoder(epoch_idx, encoder, data_info, train_dataloader, val_datalo
 
 
 def main():
-    logging.basicConfig(format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s', level=logging.INFO)#, filename='result.log')
+    logging.basicConfig(format='%(asctime)s - [line:%(lineno)d] - %(levelname)s: %(message)s', level=logging.INFO, filename='result.log')
     logger.info('#'*100)
     args = parse_argument()
     set_seed(args.seed)
@@ -113,25 +130,30 @@ def main():
         val_dataloader_list.append(val_dataloader)
         test_dataloader_list.append(test_dataloader)
         data_info_list.append(data_info)
-
     data_num = len(args.data_name)
+
     cl_dataloader, cl_data_info = load_cl_dataloader(args)
-    start = time.time()
-    encoder = Encoder(args)
-    cl_loss = ContrastiveLoss(args).to(args.device)
+    args.env = lmdb.open(f'{args.data_dir}/{args.cl_data_name}', map_size=int(1e12), max_dbs=1, readonly=True)
+    args.graphs_db = args.env.open_db('graph'.encode())
+
+    encoder = CMPNN(args).to(args.device)
+    encoder_loss = ContrastiveLoss(args).to(args.device)
     encoder_optimizer = build_optimizer(encoder, args.cl_init_lr)
-    encoder_scheduler = build_lr_scheduler(encoder_optimizer, args.cl_steps_per_epoch, args.cl_init_lr, args.cl_max_lr, args.cl_final_lr, args)
+    encoder_scheduler = build_lr_scheduler(encoder_optimizer, cl_data_info, args.cl_init_lr, args.cl_max_lr, args.cl_final_lr, args)
+    
     metric_func = get_metric_func(args.metric)
 
-    for idx in range(100):
+    for idx in range(1000):
         if idx == 0:
             for i in range(data_num):
-                evaluate_encoder(-1, encoder, data_info_list[i], train_dataloader_list[i], val_dataloader_list[i], metric_func, 5, args)
+                evaluate_encoder(-1, encoder.encoder, data_info_list[i], train_dataloader_list[i], val_dataloader_list[i], metric_func, 5, args)
 
-        loss = train_encoder(idx, encoder, cl_loss, encoder_optimizer, encoder_scheduler, cl_dataloader)
+        loss = train_encoder(idx, encoder, encoder_loss, encoder_optimizer, encoder_scheduler, cl_data_info, cl_dataloader, args)
         logger.info(f'Epoch {idx}\'s Contrastive Loss: {loss}' )
         for i in range(data_num):
-            evaluate_encoder(idx, encoder, data_info_list[i], train_dataloader_list[i], val_dataloader_list[i], metric_func, 5, args)
+            evaluate_encoder(idx, encoder.encoder, data_info_list[i], train_dataloader_list[i], val_dataloader_list[i], metric_func, 5, args)
+
+    
 
 
 

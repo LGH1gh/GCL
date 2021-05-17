@@ -64,7 +64,6 @@ class HalfLinearPNGenerator(nn.Module):
 
         return z_i, z_j, z_k
 
-
 class SquareSimilarity(nn.Module):
     def __init__(self, device):
         super().__init__()
@@ -142,6 +141,26 @@ class ContrastiveLoss(nn.Module):
 
         return loss
 
+class NCESoftmaxContrastiveLoss(nn.Module):
+    def __init__(self, args):
+        super().__init__()
+        self.criterion = nn.CrossEntropyLoss()
+        self.device = args.device
+        self.temperature = args.temperature
+    
+    def forward(self, in_feature_i, in_feature_j):
+        batch_size = in_feature_i.size(0)
+
+        positive_similarity = F.cosine_similarity(in_feature_i, in_feature_j, dim=1).view(-1, 1)
+        negative_mask = (~torch.eye(batch_size, batch_size, dtype=bool)).to(self.device).float()
+        similarity = F.cosine_similarity(torch.cat([in_feature_i], dim=0).unsqueeze(1), torch.cat([in_feature_j], dim=0).unsqueeze(0), dim=2) * negative_mask
+        first_column = similarity[:, 0]
+        similarity = torch.diag(first_column) + similarity
+
+        similarity = torch.cat((positive_similarity, similarity[:, 1:]), dim=1) / self.temperature
+        label = torch.tensor([0]*batch_size).to(self.device).long()
+        loss = self.criterion(similarity, label)
+        return loss
             
 if __name__ == "__main__":
     import argparse
